@@ -1,0 +1,44 @@
+@import 'custom-theme';
+
+.card-title {
+  background-color: $primary;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0.5rem;
+  font-size: 16px;
+  border: none;
+  color: #fff;
+}
+
+mat-card {
+  overflow: hidden;
+  width: 100%;
+
+  .card-content {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    margin-bottom: 0 !important;
+
+    .form {
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-input {
+      width: 90%;
+    }
+  }
+
+  .mat-checkbox-inner-container {
+    margin-right: 16px;
+  }
+
+  .btn-submit {
+    color: $primary;
+    text-transform: uppercase;
+  }
+
+  .card-footer {
+    margin: -16px;
+    width: 100%;
+  }
+}

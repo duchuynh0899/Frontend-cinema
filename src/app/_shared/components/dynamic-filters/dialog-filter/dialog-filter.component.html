@@ -1,0 +1,46 @@
+<mat-card class="remove-padding-mat-card">
+  <mat-card-title class='card-title'>
+    {{ data.filterOption.displayName }}
+  </mat-card-title>
+  <mat-card-content class="card-content">
+    <ng-container *ngIf="data.filterOption.type === 'input'">
+      <form [formGroup]="dialogForm" (ngSubmit)='submit()' class="form">
+        <mat-form-field class="pt-4 pb-4 form-input">
+          <mat-label>Matching result</mat-label>
+          <input matInput [formControlName]="data.filterOption.name" />
+          <mat-error>{{ this.dialogForm.get(data.filterOption.name).getError('error') }}</mat-error>
+        </mat-form-field>
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="data.filterOption.type === 'checkbox'">
+      <div class="p-2" *ngFor="let item of data.filterOption.data">
+        <mat-checkbox (change)="selectCheckBox(item)" [checked]='data.filters[data.filterOption.name]?.includes(item)'>
+          {{ item }}
+        </mat-checkbox>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="data.filterOption.type === 'date-range'">
+      <div class="px-3 py-2">
+        <mat-form-field class="w-100" appearance="standard">
+          <mat-label>Form Date</mat-label>
+          <input [readonly]="true" matInput [matDatepicker]="pickerForm" [max]="dateTo" [(ngModel)]="dateForm">
+          <mat-datepicker-toggle matSuffix [for]="pickerForm"></mat-datepicker-toggle>
+          <mat-datepicker #pickerForm ></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="standard">
+          <mat-label>To Date</mat-label>
+          <input [readonly]="true" matInput [matDatepicker]="pickerTo" [min]="dateForm" [(ngModel)]="dateTo">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </mat-card-content>
+  <div class="d-inline-flex justify-content-end m-2 card-footer">
+    <div>
+      <button class="btn-submit ml-1 mr-2" mat-button (click)="submit()">{{ 'apply' }}</button>
+    </div>
+  </div>
+</mat-card>

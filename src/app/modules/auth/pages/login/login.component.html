@@ -1,0 +1,38 @@
+<div class="w-100 h-100 login-wrapper">
+  <form [formGroup]="myForm" class="login-form" (ngSubmit)="submitForm()">
+    <mat-card class="mat-card-container">
+      <mat-card-content>
+        <img class="logo-svg d-block w-50 h-50" src="assets/icon/logo.png" alt="unitel-logo" />
+        <div class="mat-form">
+          <mat-form-field appearance="standard" color="primary">
+            <label class="label">Language *</label>
+            <mat-select formControlName="language" (ngModelChange)="languageService.setLanguage($event)">
+              <mat-option *ngFor="let lang of languageService.langs" [value]="lang.value">
+                {{ lang.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="mat-form">
+          <mat-form-field appearance="standard" color="primary">
+            <label class="label">Username *</label>
+            <input matInput formControlName="username" required>
+          </mat-form-field>
+        </div>
+        <div class="mat-form">
+          <mat-form-field appearance="standard" color="primary">
+            <label class="label">Password *</label>
+            <input matInput formControlName="password" required>
+          </mat-form-field>
+        </div>
+        <div *ngIf="errorMsg" class="errors">
+          <mat-error>{{errorMsg}}</mat-error>
+        </div>
+        <div class="footer-wrapper">
+          <button mat-button class="d-block text-uppercase btn-login" type="submit" color="primary">Login</button>
+          <a (click)="openFeedBack()" class="d-block">Need help?</a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

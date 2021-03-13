@@ -1,0 +1,63 @@
+@import "custom-theme";
+.title {
+    background-color: $primary;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 0.5rem;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+}
+
+.content {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    margin-bottom: 0 !important;
+    padding: 1rem 2rem;
+    textarea {
+        min-height: 6rem;
+        resize: none;
+    }
+    .feedback-image {
+        margin-top: 2.5rem;
+        .input-upload {
+            display: none;
+        }
+        .upload-img {
+            border: 1px dashed rgba(0, 0, 0, 0.12) !important;
+            height: 20vh;
+            cursor: pointer;
+            img {
+                display: block;
+                max-width: 25%;
+                margin: 0px auto;
+                height: auto;
+                object-fit: contain;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.card-footer {
+    padding: 10px 15px;
+    width: 100%;
+    .btn-submit {
+        color: $primary;
+    }
+    .btn-cancel {
+        color: rgba(116, 116, 116, 0.996078431372549);
+    }
+}
+
+.preview-img {
+    display: block;
+    max-width: 100% !important;
+    height: 100% !important;
+    margin: 0px auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.border-error {
+    border: 1px solid red !important;
+}

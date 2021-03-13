@@ -1,0 +1,25 @@
+<div class='wrap-paginator d-flex justify-content-between align-items-center pb-2 pt-2'>
+  <div class='items-per-page pl-3'>
+    <span>{{ 'Number of rows per page:' }}</span>
+    <mat-select class="select pl-3" [(ngModel)]="pageSize" (ngModelChange)="changePageSize($event)">
+      <mat-option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</mat-option>
+    </mat-select>
+  </div>
+  <div class="d-flex align-items-center">
+    <button [disabled]="previousButtonsDisabled()" (click)="firstPage()" mat-icon-button class="custom-icon">
+      <fa-icon [icon]="['fas', 'angle-double-left']" size="lg"></fa-icon>
+    </button>
+    <span>{{ 'Trang ' + pageIndex + '/' + getNumberOfPages()}}</span>
+    <div class="d-flex">
+      <button [disabled]="previousButtonsDisabled()" (click)="previousPage()" mat-icon-button class="custom-icon">
+        <fa-icon [icon]="['fas', 'angle-left']" size="lg"></fa-icon>
+      </button>
+      <button [disabled]="nextButtonsDisabled()" (click)="nextPage()" mat-icon-button class="custom-icon">
+        <fa-icon [icon]="['fas', 'angle-right']" size="lg"></fa-icon>
+      </button>
+    </div>
+    <button [disabled]="nextButtonsDisabled()" (click)="lastPage()" mat-icon-button class="custom-icon">
+      <fa-icon [icon]="['fas', 'angle-double-right']" size="lg"></fa-icon>
+    </button>
+  </div>
+</div>

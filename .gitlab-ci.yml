@@ -1,0 +1,120 @@
+image: node:12
+stages:
+  - build
+  - deploy
+
+# build_unitel:
+#   only:
+#     - production/master
+#   stage: build
+#   environment:
+#     name: unitel
+#     url: https://unitel.net
+#   image: node:12
+#   cache:
+#     key: always
+#     paths:
+#       - node_modules/
+#   before_script:
+#     - node -v
+#     - npm -v
+#     - npm install
+#     - cp src/environments/environment.local.ts src/environments/environment.ts
+#   script:
+#     - node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=unitel.net
+#     # - mkdir sourcemap
+#     # - mv dist/*.map sourcemap/
+#     - npm run post-build
+#   artifacts:
+#     expire_in: 1 day
+#     paths:
+#       - dist/
+#       # - sourcemap/
+
+# deploy_unitel:
+#   only:
+#     - production/master
+#   stage: deploy
+#   environment:
+#     name: unitel
+#     url: https://unitel.net
+#   image: andreysenov/firebase-tools
+#   before_script:
+#     - firebase use unitel.net
+#   script:
+#     - firebase deploy --only hosting:main -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
+
+# build_unitel_stg:
+#   only:
+#     - stg-unitel
+#   stage: build
+#   environment:
+#     name: stg-unitel
+#     url: http://unitel-ci.ttc-solutions.com
+#   image: node:12
+#   cache:
+#     key: always
+#     paths:
+#       - node_modules/
+#   before_script:
+#     - node -v
+#     - npm -v
+#     - npm install
+#     - cp src/environments/environment.local.ts src/environments/environment.ts
+#   script:
+#     - node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=stg.unitel.net
+#     - npm run post-build
+#   artifacts:
+#     expire_in: 1 day
+#     paths:
+#       - dist/
+#       # - sourcemap/
+
+# deploy_unitel_stg:
+#   only:
+#     - stg-unitel
+#   stage: deploy
+#   environment:
+#     name: stg-unitel
+#     url: http://unitel-ci.ttc-solutions.com
+#   image: andreysenov/firebase-tools
+#   before_script:
+#     - firebase use stg.unitel.net
+#   script:
+#     - firebase deploy --only hosting:main -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
+
+build_unitel_feature:
+  only:
+    - stg
+  stage: build
+  image: node:12
+  cache:
+    key: always
+    paths:
+      - node_modules/
+  before_script:
+    - node -v
+    - npm -v
+    - npm install
+    - cp src/environments/environment.local.ts src/environments/environment.ts
+  script:
+    - node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --prod --configuration=stg --base-href=/admin/
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - dist/
+
+deploy_unitel_feature:
+  only:
+    - stg
+  stage: deploy
+  image: ictu/sshpass
+  before_script:
+    - "command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )"
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - cd dist
+    - rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress . unitel-ci@unitel-ci.ttc-solutions.com:/home/unitel-ci/html/admin

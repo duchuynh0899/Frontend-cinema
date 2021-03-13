@@ -1,0 +1,15 @@
+<div class="admin-container">
+  <div class="admin-content">
+    <mat-drawer-container>
+      <mat-drawer #snav mode="over">
+        <app-menu (toggle)="snav.toggle()"></app-menu>
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="header">
+          <app-header (toggle)="snav.toggle()"></app-header>
+        </div>
+        <router-outlet></router-outlet>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+</div>

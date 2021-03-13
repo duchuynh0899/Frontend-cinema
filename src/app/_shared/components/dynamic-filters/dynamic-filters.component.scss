@@ -1,0 +1,58 @@
+@import 'custom-theme';
+
+.wrap-filter {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+  .add-filter {
+    width: 85%;
+
+    .add-filter-btn,
+    .mat-button {
+      font-size: 13px;
+      color: #aaaaaa;
+      border: 1px dotted #aaaaaa;
+      border-radius: 20px;
+      padding: 0.2rem 2rem !important;
+      line-height: 32px !important;
+      background-color: #fff !important;
+      cursor: pointer;
+      min-width: 145px;
+    }
+  }
+
+  .clear-filter {
+    width: 15%;
+  }
+
+  mat-chip {
+    max-width: 240px;
+    >div {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+}
+
+.filter-link {
+  cursor: pointer;
+  user-select: none;
+  padding: 5px;
+  width: 100%;
+}
+
+mat-chip {
+  height: 2.2rem;
+}
+
+.style-clear {
+  color: #7f7f7f;
+  font-size: 1rem;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary;
+  }
+}

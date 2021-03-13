@@ -1,0 +1,29 @@
+@import 'custom-theme';
+
+.title {
+  background-color: $primary;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0.5rem;
+  font-size: 16px;
+  border: none;
+  color: #fff;
+}
+
+.content {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  margin-bottom: 0 !important;
+}
+
+.btn-submit {
+  color: $primary;
+}
+
+.btn-cancel {
+  color: rgba(116, 116, 116, 0.996078431372549);
+}
+
+.card-footer {
+  padding: 10px 0;
+  width: 100%;
+}

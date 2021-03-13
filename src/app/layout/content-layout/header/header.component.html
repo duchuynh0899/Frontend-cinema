@@ -1,0 +1,35 @@
+<div class="header-container" fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="logo" fxLayout="row" fxLayoutAlign="center center">
+    <button class="toggle" mat-icon-button (click)="toggle.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a [routerLink]="'/'" ngClass.xs="d-none">
+      UniID Admin
+    </a>
+  </div>
+  <div class="user-group" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="7px">
+    <div class="help">
+      <button (click)="goToPrivacy()" mat-icon-button>
+        <mat-icon>format_list_bulleted</mat-icon>
+      </button>
+    </div>
+    <div class="user">
+      <button [matMenuTriggerFor]="menu" mat-icon-button>
+        <ng-container *ngIf="avatar; else elseTemplate">
+          <img [src]="avatar" alt="">
+        </ng-container>
+        <ng-template #elseTemplate>
+          <mat-icon>account_circle</mat-icon>
+        </ng-template>
+      </button>
+      <mat-menu #menu="matMenu" class="mymegamenu">
+        <button mat-menu-item routerLink="/my-profile">
+          <mat-icon>account_circle</mat-icon> Profile
+        </button>
+        <button (click)="logout()" mat-menu-item>
+          <mat-icon>logout</mat-icon> Log Out
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+{
+  "_": {
+    "agree": "Agree",
+    "back": "Back",
+    "birthday": "BirthDay",
+    "cancel": "Cancel",
+    "day": "Day",
+    "dismiss": "Dismiss",
+    "edit": "Edit",
+    "email": "Email",
+    "erase": "Erase",
+    "gender": {
+      "_": "Gender",
+      "female": "Female",
+      "male": "Male",
+      "unknown": "Other"
+    },
+    "help": "Help",
+    "hi": "Hi",
+    "invalid_date": "Invalid date",
+    "learn_more": "Learn more",
+    "login_with": "Login with",
+    "logout": "Logout",
+    "month": {
+      "_": "Month",
+      "april": "April",
+      "august": "August",
+      "december": "December",
+      "february": "February",
+      "january": "January",
+      "july": "July",
+      "june": "June",
+      "march": "March",
+      "may": "May",
+      "november": "November",
+      "october": "October",
+      "september": "September"
+    },
+    "name": "Name",
+    "next": "Next",
+    "off": "Off",
+    "ok": "OK",
+    "on": "On",
+    "or": "Or",
+    "password": "Password",
+    "phone": "Phone",
+    "privacy": "Privacy",
+    "remove": "Remove",
+    "resend_it": "Resend it",
+    "resend_otp": "Resend OTP",
+    "save": "Save",
+    "select": "Select",
+    "send": "Send",
+    "terms": "Terms",
+    "uni_id_account": "UniID Account",
+    "username": "Username",
+    "welcome": "Welcome",
+    "year": "Year"
+  },
+  "role": {
+    "edit_roles": {
+      "_": "Roles informaiton",
+      "describe": {
+        "label": "Describe",
+        "required": "Describe field cannot be blank"
+      },
+      "name": {
+        "label": "Name",
+        "required": "Name field cannot be blank"
+      },
+      "organization": {
+        "label": "Organization",
+        "required": "Organization field cannot be blank"
+      }
+    },
+    "list_view": {
+      "roles": {
+        "_": "Role"
+      },
+      "descriptions": {
+        "_": "Descriptions"
+      },
+      "system": {
+        "_": "System"
+      }
+    }
+  }
+}

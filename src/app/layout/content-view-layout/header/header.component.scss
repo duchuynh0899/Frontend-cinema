@@ -1,0 +1,68 @@
+@import 'custom-theme';
+
+.header-container {
+  padding: 0 2rem 0 0.5rem;
+  height: 50px;
+  width: 100vw;
+  background: $primary;
+
+  .breadcrumb {
+    color: rgba(230, 230, 230, 0.85);
+    font-size: 20px;
+  }
+
+  mat-icon {
+    color: #fff;
+    font-size: 2rem;
+    width: 2rem;
+  }
+
+  fa-icon {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .logo {
+    height: 100%;
+
+    img {
+      max-height: 100%;
+      cursor: pointer;
+    }
+  }
+
+  a {
+    margin-left: 10px;
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+
+  .user-group {
+    .user {
+      button {
+        img {
+          height: 2rem;
+          width: 2rem;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 0.5rem !important;
+
+    .search {
+      display: none !important;
+    }
+
+    .user-group {
+      .menu {
+        display: none !important;
+      }
+    }
+  }
+}

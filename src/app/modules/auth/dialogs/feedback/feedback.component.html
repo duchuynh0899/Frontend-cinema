@@ -1,0 +1,49 @@
+<div class="main-container">
+    <div class="p-3 title">Send Feedback</div>
+    <form [formGroup]="myForm">
+        <div class="content" fxLayout="column gap">
+            <div fxLayoutAlign=" center" fxLayout=" row" fxFlex="100" fxLayoutGap="1rem" fxLayoutGap.xs="0">
+                <div fxLayout=" column" fxFlex="48" fxFlex.xs="100">
+                    <label fxFlex.xs="100">Name *</label>
+                    <mat-form-field fxFlex.xs="100" fxFlex="100" class="custom-mat-form-field mt-1" appearance="outline">
+                        <input matInput formControlName="name" fxFlex.xs="100">
+                    </mat-form-field>
+                </div>
+                <div fxLayout=" column" fxFlex="48" fxFlex.xs="100">
+                    <label fxFlex.xs="100">Phone number *</label>
+                    <mat-form-field fxFlex.xs="100" fxFlex="100" class="custom-mat-form-field mt-1" appearance="outline">
+                        <input matInput formControlName="phone" fxFlex.xs="100">
+                    </mat-form-field>
+                </div>
+            </div>
+            <mat-error class="mt-1" *ngIf="((myForm.get('name').invalid && myForm.get('name').touched) || (myForm.get('phone').invalid && myForm.get('phone').touched))">
+                {{ getError('name') || getError('phone') }}</mat-error>
+
+            <div fxFlex="100" class="mt-3" fxLayout="column">
+                <label>Feedback Content *</label>
+                <mat-form-field class="custom-mat-form-field mt-2" appearance="outline">
+                    <textarea matInput class="w-100" formControlName="feedback"></textarea>
+                    <mat-error class="mt-4" *ngIf="(myForm.get('feedback').invalid && myForm.get('feedback').touched)">{{ getError('feedback') }}
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div fxFlex="100" class="feedback-image mb-3">
+                <input #upload type="file" accept="image/*" class="input-upload" (change)="onSelectFile($event.target?.files[0])" />
+                <label>Image</label>
+                <div class="upload-img mt-3 w-100" fxLayout="column" fxLayoutAlign="center center" (click)="upload.click()">
+                    <img [src]="url || 'assets/icon/upload.svg'" alt="" [class.preview-img]="url">
+                    <ng-container *ngIf="!url">
+                        <button mat-flat-button color="primary" fxFlex="20" class="mt-2">Upload Image</button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div fxLayoutAlign="end" class="card-footer">
+            <button mat-flat-button mat-dialog-close class="btn-cancel ml-1 text-uppercase">Cancel</button>
+            <button mat-flat-button class="btn-submit mx-1 text-uppercase">Send</button>
+        </div>
+    </form>
+
+</div>

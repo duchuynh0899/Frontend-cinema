@@ -1,0 +1,22 @@
+<div class="p-3 title">{{data.title}}</div>
+<form class="content p-3 pt-0" [formGroup]="myForm" (ngSubmit)="submit()">
+  <section class="w-100 mt-1">
+    <label class="d-block">Choose column</label>
+    <mat-radio-group class="w-100" formControlName="column" color="primary">
+      <mat-radio-button class="d-block pl-2" value="displayed">All columns are displayed</mat-radio-button>
+      <mat-radio-button class="d-block pl-2" value="all">All columns of information</mat-radio-button>
+    </mat-radio-group>
+  </section>
+  <section class="w-100 mt-2 mb-2">
+    <label class="d-block">Choose format</label>
+    <mat-radio-group formControlName="format">
+      <mat-radio-button class="pl-2" value="xlsx" color="primary">
+        Excel
+      </mat-radio-button>
+    </mat-radio-group>
+  </section>
+  <div class="d-flex justify-content-end py-3 footer">
+    <button class="text-uppercase" mat-button type="button" (click)="close()">cancel</button>
+    <button class="text-uppercase" mat-button type="submit" color="primary">download</button>
+  </div>
+</form>

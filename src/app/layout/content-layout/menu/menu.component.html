@@ -1,0 +1,19 @@
+<div class="menu">
+  <div class="logo" (click)="snavToggle()">
+    <span>UniID</span> Admin
+  </div>
+  <div *ngFor="let group of menuItems" class="menu-group">
+    <a class="menu-item parent" [routerLink]="group.url" routerLinkActive="group-active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <div style="width: 40px;">
+        <fa-icon [icon]="['fas', group.icon]" size="2x"></fa-icon>
+      </div>
+      <div class="menu-name" fxLayout="row" fxLayoutAlign="center center">
+        {{ group.name }}
+      </div>
+      <div *ngIf="group.children" [class.ic-arrow]="group.children">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </div>
+    </a>
+  </div>
+</div>

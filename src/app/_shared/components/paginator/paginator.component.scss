@@ -1,0 +1,27 @@
+@import "custom-theme.scss";
+
+.wrap-paginator {
+  width: 100%;
+
+  .items-per-page {
+    width: 30%;
+
+    .select {
+      width: 50px;
+    }
+  }
+
+  .custom-icon {
+    color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 0 3px;
+  }
+
+  .custom-icon:disabled {
+    color: #9a9a9a !important;
+  }
+
+}

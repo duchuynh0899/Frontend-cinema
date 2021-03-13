@@ -1,0 +1,24 @@
+<div class="d-flex wrap-filter p-2">
+  <div class='add-filter d-flex algin-items-center remove-background-dialog'>
+    <mat-chip-list #chipList class="d-flex algin-items-center">
+      <mat-chip #addBtn mat-button class="add-filter-btn ml-2" (click)="addFilter()">
+        <mat-icon>add</mat-icon>Add filter
+      </mat-chip>
+      <mat-chip #chipFilter *ngFor="let filter of filters | keyvalue;let index=index" class="ml-2" (removed)="remove(filter.key)"
+        (click)="updateFilter(filter.key, index, chipFilter)">
+          <div>{{ filter | filterDisplay }}</div>
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+
+  </div>
+  <div class="text-right clear-filter d-flex align-items-center justify-content-end">
+    <a *ngIf="isFiltersEmpty" (click)="clear()" class="style-clear">CLEAR FILTERS</a>
+  </div>
+</div>
+
+<ng-template #addFilterDropdown>
+  <div *ngFor="let item of filterOptions" class="overflow-hidden d-flex align-items-start flex-column ml-1">
+    <div class="filter-link" (click)="openFilterDialog(item, addBtn)">{{ item.displayName }}</div>
+  </div>
+</ng-template>
