@@ -57,7 +57,7 @@ export class LoginComponent {
           this.router.navigate(['/']);
         },
         err => {
-          this.snack.open(err);
+          this.snack.open(err.error.message);
         });
   }
 
