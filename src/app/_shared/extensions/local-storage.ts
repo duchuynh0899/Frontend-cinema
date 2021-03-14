@@ -17,4 +17,6 @@ export class LocalStorageExtention {
 
   static setToken(token: string): void { localStorage.setItem('token', token); }
 
+  static deleteToken(token: string): void { localStorage.removeItem('token'); }
+
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://unitel-sso.firecloud.live',
+  apiURL: 'https://server-cinema.herokuapp.com',
 };
 
 /*

@@ -1,3 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UsersService } from './../../../../_shared/services/users.service';
 import { LocalStorageExtention } from './../../../../_shared/extensions/local-storage';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -15,46 +17,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
+  checking = false;
   myForm: FormGroup;
   errorMsg: string;
   loading: boolean = true;
-
-  getErrorMessage(): void {}
+  hide = true;
+  getErrorMessage(): void { }
 
   constructor(
     fb: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
     public languageService: LanguageService,
-    private authorizeService: AuthorizeService,
+    private usersService: UsersService,
+    private snack: MatSnackBar
   ) {
     this.myForm = fb.group({
-      language: [languageService.currentLang.value, [TValidators.required]],
-      username: ['', [TValidators.required]],
-      password: ['', [TValidators.required]],
+      username: ['', TValidators.required],
+      password: ['', TValidators.required],
     });
   }
 
   submitForm() {
-    this.myForm.markAsDirty();
-    this.errorMsg = "";
-    this.loading = true;
-
-    this.authorizeService.login(this.myForm.value)
-      .pipe(finalize(() => this.loading = false))
+    this.myForm.markAllAsTouched();
+    if (this.myForm.invalid) {
+      return;
+    }
+    this.checking = true;
+    this.usersService.login(this.myForm.value)
+      .pipe(finalize(() => this.checking = false))
       .subscribe(
         res => {
-          LocalStorageExtention.setToken(res.data.token);
+          LocalStorageExtention.setToken(res.token);
+          this.snack.open('Successs', 'End now', {
+            duration: 500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+          });
           this.router.navigate(['/']);
         },
         err => {
-          if (err.error.status === 400) {
-            this.errorMsg = 'Must not be blank';
-            return;
-          }
-          this.errorMsg = err.error.error;
-          throw err;
+          this.snack.open(err);
         });
   }
 
@@ -64,5 +67,9 @@ export class LoginComponent {
       panelClass: 'custom-padding-dialog'
     });
   }
+
+  // showPass() {
+  //   this.hide = !this.hide;
+  // }
 
 }

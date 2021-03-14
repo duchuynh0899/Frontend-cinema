@@ -1,6 +1,7 @@
 import { Directive } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { LocalStorageExtention } from '@shared/extensions/local-storage';
 import { DestroyService } from '@shared/services/destroy.service';
 import { isEmpty } from 'lodash-es';
 import { filter, map, takeUntil } from 'rxjs/operators';
@@ -47,6 +48,7 @@ export abstract class AbstractHeaderDirective {
 
   logout(): void {
     this.router.navigate(['/auth/login']);
+    LocalStorageExtention.deleteToken('token');
   }
 
   goToPrivacy(): void {
