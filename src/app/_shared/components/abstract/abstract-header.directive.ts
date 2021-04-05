@@ -51,8 +51,6 @@ export abstract class AbstractHeaderDirective {
     LocalStorageExtention.deleteToken('token');
   }
 
-  goToPrivacy(): void {
-    this.router.navigate(['/center/privacy-and-terms']);
-  }
+
 
 }

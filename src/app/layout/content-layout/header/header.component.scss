@@ -1,60 +1,63 @@
-.header-container {
-  padding: 0 2rem 0 0.5rem;
-  height: 100%;
-  width: 100vw;
+* {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  text-decoration: none;
+}
 
-  mat-icon {
-    color: #fff;
-    font-size: 2rem;
-    width: 2rem;
-  }
-
-  fa-icon {
-    color: #fff;
-    font-size: 1.5rem;
-  }
-
+.header {
+  padding: 2rem;
   .logo {
-    height: 100%;
+    font-size: 35px;
+    font-weight: 600;
+  }
 
-    img {
-      max-height: 100%;
+  .menu {
+    margin: 0px auto;
+    max-width: 40rem;
+
+    .menu-item {
+      margin-left: 3rem;
+      &::after {
+        content: '';
+        display: block;
+        width: 0%;
+        height: 5px;
+        background-color: #ed1c24;
+        transition: 0.3s;
+      }
+
+      &:hover {
+        color: #ed1c24;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    a:nth-child(1) {
+      margin-left: 0px !important;
+    }
+
+    .divider-bottom:hover {
+      width: 100%;
+    }
+
+    .item {
+      font-size: 23px;
+      color: darkslategray;
+      font-weight: 600;
       cursor: pointer;
     }
   }
 
-  a {
-    margin-left: 10px;
-    color: #fff;
-    font-size: 1.75rem;
-    font-weight: 400;
-  }
-
-  .user-group {
-    .user {
-      button {
-        img {
-          height: 2rem;
-          width: 2rem;
-          border-radius: 50%;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1024px) {
-  .header-container {
-    padding: 0 0.5rem !important;
-
-    .search {
-      display: none !important;
-    }
-
-    .user-group {
-      .menu {
-        display: none !important;
-      }
+  .dasboard {
+    span {
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+      font-size: 2.5rem;
     }
   }
 }
