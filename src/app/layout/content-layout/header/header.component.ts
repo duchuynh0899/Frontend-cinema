@@ -15,11 +15,22 @@ export class HeaderComponent implements OnInit {
   { name: 'Now Showing', url: 'show' },
   { name: 'Coming Soon', url: 'coming' },
   { name: 'Cinemas', url: 'cinemas' }]
+  images: any[] = [
+    { url: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg', content: 'phim' },
+    { url: 'https://image.tmdb.org/t/p/original/hpgda6P9GutvdkDX5MUJ92QG9aj.jpg', content: 'test' },
+    { url: 'https://image.tmdb.org/t/p/original/stemLQMLDrlpfIlZ5OjllOPT8QX.jpg', content: 'test' },
+    { url: 'https://image.tmdb.org/t/p/original/skvI4rYFrKXS73BJxWGH54Omlvv.jpg', content: 'test' },
+    { url: 'https://image.tmdb.org/t/p/original/rtf4vjjLZLalpOzDUi0Qd2GTUqq.jpg', content: 'test' }];
+
+  backgroundImage: string = '';
+  content: any;
   constructor(private router: Router) {
 
   }
   ngOnInit(): void {
-
+    let ran = Math.round((Math.random() * 100) % 5);
+    this.backgroundImage = this.images[ran].url;
+    this.content = this.images[ran].content;
   }
 
   logout(): void {
