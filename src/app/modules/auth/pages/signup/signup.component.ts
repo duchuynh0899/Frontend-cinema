@@ -75,7 +75,6 @@ export class SignupComponent implements OnInit {
             this.myForm.get('phone')?.setErrors({ error: 'Số điện thoại này đã tồn tại' })
           }
 
-          this.snack.open(err.error.keyValue);
         });
   }
 
