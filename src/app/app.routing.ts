@@ -1,3 +1,4 @@
+import { NowShowingComponent } from './modules/now-showing/now-showing.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthorizeGuard } from '@shared/guards/authorize.guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
@@ -14,6 +15,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('@modules/home/home.module').then(m => m.HomeModule),
       },
+      {
+        path: 'now-showing',
+        component: NowShowingComponent,
+        // loadChildren: () => import('@modules/auth/auth.module').then(m => m.AuthModule),
+      },
 
     ]
   },
@@ -23,6 +29,7 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     loadChildren: () => import('@modules/auth/auth.module').then(m => m.AuthModule),
   },
+
   { path: '**', redirectTo: '/404' }
 ];
 
