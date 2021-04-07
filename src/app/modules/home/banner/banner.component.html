@@ -1,12 +1,15 @@
-<div [ngStyle]="{'background-image': 'url(' + cinema.url + ')'}" class="banner">
-  <a class="to-detail text-white"> Learn More</a>
-</div>
-<div class="modal"></div>
-<div class="cinema-detail" style="z-index: 100000;">
-  <h2 class="title">{{ cinema.name }}</h2>
-  <p class="mt-3">{{ cinema.content }}</p>
-  <div class="detail mt-3" fxLayout="row">
-    <span>{{ cinema.time }}</span>
-    <span class="ml-3">{{ cinema.catogery }}</span>
+<div class="main">
+  <div [ngStyle]="{'background-image': 'url(' + cinema.url + ')'}" class="banner">
+    <a class="text-white to-detail"> Learn More</a>
   </div>
+
+  <div class="cinema-detail" style="z-index: 100000;">
+    <h2 class="title">{{ cinema.name }}</h2>
+    <p class="mt-3">{{ cinema.content }}</p>
+    <div class="mt-3 detail" fxLayout="row">
+      <span>{{ cinema.time }}</span>
+      <span class="ml-3">{{ cinema.catogery }}</span>
+    </div>
+  </div>
+  <div class="modal"></div>
 </div>

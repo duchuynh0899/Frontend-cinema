@@ -1,0 +1,48 @@
+.main {
+  background: url('/assets/images/empty-cinema.jpg') no-repeat fixed center;
+  height: 100%;
+}
+.auth {
+  margin-top: 50px;
+  min-height: 500px;
+  width: 430px;
+  .logo-svg {
+    margin: 0px auto;
+  }
+  mat-card-content {
+    text-align: center;
+    padding: 2rem;
+
+    @media only screen and (max-width: 599px) {
+      // padding: 40px 16px;
+    }
+  }
+}
+
+h1 {
+  font-size: 50px;
+}
+
+.footer {
+  margin-top: 15px;
+
+  span {
+    font-size: 12px;
+    color: #000000;
+    line-height: 1.4;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .footer {
+    margin-top: 15px;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}

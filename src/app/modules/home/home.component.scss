@@ -1,37 +1,14 @@
-.banner {
-  top: 0;
-  left: 0;
-  height: 50rem;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.modal {
-  width: 100%;
+.body {
   height: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4) !important;
+  width: 100%;
 }
 
-.cinema-detail {
-  z-index: 1000000;
-  color: white;
-  padding-top: 20rem;
-  padding-left: 15rem;
-  max-width: 40rem;
+// .banner {
+//   // position: relative;
+// }
 
-  .title {
-    font-size: 40px;
-  }
-
-  .detail {
-    max-width: 35rem;
-    span {
-      font-size: 18px;
-    }
-  }
-}
+// .suggeted {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+// }

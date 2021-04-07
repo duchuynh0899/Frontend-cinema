@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<div class="d-flex justify-content-center align-items-center main">
+  <div class="auth">
+    <mat-progress-bar *ngIf="authLayoutService.loading | async" mode="indeterminate"></mat-progress-bar>
+    <mat-card>
+      <mat-card-content class="text-center">
+        <img class="logo-svg d-block w-50 h-50" src="assets/images/logo.png" alt="unitel-logo" />
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>

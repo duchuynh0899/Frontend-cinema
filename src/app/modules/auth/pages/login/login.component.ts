@@ -1,3 +1,4 @@
+import { AuthlayoutService } from './../../../../layout/auth-layout/authlayout.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from './../../../../_shared/services/users.service';
 import { LocalStorageExtention } from './../../../../_shared/extensions/local-storage';
@@ -29,7 +30,7 @@ export class LoginComponent {
     private dialog: MatDialog,
     private router: Router,
     public languageService: LanguageService,
-    private usersService: UsersService,
+    private authlayoutService: AuthlayoutService,
     private snack: MatSnackBar
   ) {
     this.myForm = fb.group({
@@ -43,11 +44,13 @@ export class LoginComponent {
     if (this.myForm.invalid) {
       return;
     }
-    this.checking = true;
-    this.usersService.login(this.myForm.value)
-      .pipe(finalize(() => this.checking = false))
+    this.authlayoutService.changeLoading(true);
+
+    this.authlayoutService.login(this.myForm.value)
+      .pipe(finalize(() => this.authlayoutService.changeLoading(false)))
       .subscribe(
         res => {
+          this.checking = true;
           LocalStorageExtention.setToken(res.token);
           this.snack.open('Successs', 'End now', {
             duration: 500,
@@ -61,12 +64,7 @@ export class LoginComponent {
         });
   }
 
-  openFeedBack() {
-    this.dialog.open(FeedbackComponent, {
-      width: '600px',
-      panelClass: 'custom-padding-dialog'
-    });
-  }
+
 
   // showPass() {
   //   this.hide = !this.hide;

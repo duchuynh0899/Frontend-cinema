@@ -1,3 +1,4 @@
+import { SignupComponent } from './pages/signup/signup.component';
 import { SharedModule } from './../../_shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { FeedbackComponent } from './dialogs/feedback/feedback.component';
   ],
   declarations: [
     LoginComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    SignupComponent
   ]
 })
 export class AuthModule { }

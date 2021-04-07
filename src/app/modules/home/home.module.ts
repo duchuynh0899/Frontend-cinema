@@ -1,3 +1,4 @@
+import { SuggetedComponent } from './suggeted/suggeted.component';
 import { BannerComponent } from './banner/banner.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,6 +14,7 @@ import { SharedModule } from '@shared/shared.module';
   ],
   declarations: [
     HomeComponent,
-    BannerComponent]
+    BannerComponent,
+    SuggetedComponent]
 })
 export class HomeModule { }
