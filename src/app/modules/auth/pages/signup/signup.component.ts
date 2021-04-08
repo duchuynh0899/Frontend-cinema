@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
 
   }
 
-  submitForm() {
+  submitForm(): void {
     this.myForm.markAllAsTouched();
     if (this.myForm.invalid) {
       return;
@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
         res => {
           this.router.navigate(['/auth/login']);
           this.snack.open('Success!!', 'X', {
-            duration: 500,
+            duration: 1000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           });
