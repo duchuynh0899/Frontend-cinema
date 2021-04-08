@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LocalStorageExtention } from '@shared/extensions/local-storage';
 import { TValidators } from '@shared/extensions/validators';
@@ -22,6 +22,8 @@ export class SignupComponent implements OnInit {
   loading: boolean = true;
   hide = true;
   show = true;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
   getErrorMessage(): void { }
 
   constructor(
@@ -62,6 +64,11 @@ export class SignupComponent implements OnInit {
       .subscribe(
         res => {
           this.router.navigate(['/auth/login']);
+          this.snack.open('Success!!', 'X', {
+            duration: 500,
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition,
+          });
         },
         err => {
 
