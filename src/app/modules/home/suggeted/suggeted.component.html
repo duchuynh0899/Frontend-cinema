@@ -1,8 +1,22 @@
-<div class="container suggested">
-  <div class="row">
-    <div class="col" *ngFor="let item of cinemas">
-      <div class="item" [ngStyle]="{ 'background-image': 'url(' + item.url + ')'}">
-      </div>
+<div class="selected-body">
+  <h2 class="p-5 title text-white">Suggested For You</h2>
+
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="suggested"
+    fxLayoutGap="30px"
+  >
+    <div
+      *ngFor="let item of cinemas"
+      class="item"
+      fxFlex="30"
+      fxFlex.md="100"
+      fxFlex.sm="100"
+      fxFlex.xs="100"
+    >
+      <div [ngStyle]="{ 'background-image': 'url(' + item.url + ')' }"></div>
+      <span class="mt-2 text-white">{{ item.name }}</span>
     </div>
   </div>
 </div>

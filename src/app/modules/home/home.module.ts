@@ -1,3 +1,4 @@
+import { NowShowingComponent } from './../now-showing/now-showing.component';
 import { SuggetedComponent } from './suggeted/suggeted.component';
 import { BannerComponent } from './banner/banner.component';
 import { NgModule } from '@angular/core';
@@ -7,14 +8,12 @@ import { HomeRoutes } from './home.routing';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    HomeRoutes
-  ],
+  imports: [CommonModule, SharedModule, HomeRoutes],
   declarations: [
     HomeComponent,
     BannerComponent,
-    SuggetedComponent]
+    SuggetedComponent,
+    NowShowingComponent,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

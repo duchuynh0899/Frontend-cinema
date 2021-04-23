@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, Renderer2 } from '@angular/core';
 import { AbstractHeaderDirective } from '@shared/components/abstract/abstract-header.directive';
 import { DestroyService } from '@shared/services/destroy.service';
 import { LocalStorageExtention } from '@shared/extensions/local-storage';
@@ -15,12 +15,18 @@ export class HeaderComponent implements OnInit {
   { name: 'Now Showing', url: 'now-showing' },
   { name: 'Coming Soon', url: 'coming' },
   { name: 'Cinemas', url: 'cinemas' }]
-  constructor(private router: Router) {
+  scroll: number;
+  constructor(private router: Router,
+    private renderer: Renderer2
+  ) {
 
   }
+  currentUser: any;
   ngOnInit(): void {
 
-
+    this.renderer.listen(window, 'scroll', ($event) => {
+      this.scroll = window.scrollY;
+    })
 
   }
 

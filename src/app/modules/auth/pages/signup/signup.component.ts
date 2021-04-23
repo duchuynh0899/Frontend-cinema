@@ -71,7 +71,6 @@ export class SignupComponent implements OnInit {
           });
         },
         err => {
-
           if (err.error.keyValue.username) {
             this.myForm.get('username')?.setErrors({ error: 'Tài khoản này đã tồn tại' })
           }

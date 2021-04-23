@@ -1,15 +1,22 @@
-<div fxLayout="row" class="p-4" class="header">
+<div fxLayout="row" class="p-4" class="header" [class.scroll]="scroll >= 30">
   <h2 class="logo">Cinema+</h2>
   <div class="menu">
     <ul fxLayout="row" fxLayoutAlign="space-around center">
-      <li *ngFor="let item of listMenu" class="ml-4" class="menu-item"><a class="item" [routerLink]="item.url">{{
-          item.name }}</a></li>
+      <li *ngFor="let item of listMenu" class="ml-4" class="menu-item">
+        <a class="item" [routerLink]="item.url">{{ item.name }}</a>
+      </li>
     </ul>
   </div>
   <div class="dasboard">
-    <span class="material-icons" [matMenuTriggerFor]="menu">
-      account_circle
-    </span>
+    <ng-container *ngIf="currentUser; else elseTemplate">
+      <!-- <ngx-avatar src="assets/avatar.jpg"></ngx-avatar> -->
+    </ng-container>
+    <ng-template #elseTemplate>
+      <span class="material-icons" [matMenuTriggerFor]="menu">
+        account_circle
+      </span>
+    </ng-template>
+
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Dashboard</button>
       <button mat-menu-item (click)="logout()">Logout</button>
