@@ -8,17 +8,25 @@
     </ul>
   </div>
   <div class="dasboard">
-    <ng-container *ngIf="currentUser; else elseTemplate">
-      <!-- <ngx-avatar src="assets/avatar.jpg"></ngx-avatar> -->
+    <ng-container *ngIf="currentUser.imageurl; else noAvatar">
+      <ngx-avatar
+        class="material-icons avatar"
+        [src]="currentUser.imageurl"
+        [matMenuTriggerFor]="menu"
+      ></ngx-avatar>
     </ng-container>
-    <ng-template #elseTemplate>
-      <span class="material-icons" [matMenuTriggerFor]="menu">
-        account_circle
-      </span>
+    <ng-template #noAvatar>
+      <div fxLayout="row" class="signin">
+        <div fxLayout="row" class="mr-3">
+          <span class="material-icons icon"> account_circle </span>
+          <p class="text-white" routerLink="/auth/login">Đăng nhập</p>
+        </div>
+        <p class="text-white" routerLink="/auth/signup">Đăng ký</p>
+      </div>
     </ng-template>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Dashboard</button>
+      <button mat-menu-item routerLink="/dash-board">Dashboard</button>
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
   </div>

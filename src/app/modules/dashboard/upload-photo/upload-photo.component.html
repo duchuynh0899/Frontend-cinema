@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>
+  {{ 'Cập nhật ảnh đại diện của bạn' | translate }}
+</h2>
+<mat-divider></mat-divider>
+<article mat-dialog-content class="upload">
+  <input #upload type="file" (change)="onSelectFile($event)" accept="image/*" />
+  <div class="body">
+    <div class="main">
+      <img
+        [src]="url || 'assets/images/upload_photo.png'"
+        (click)="upload.click()"
+        alt="upload icon"
+      />
+      <ng-container *ngIf="!url">
+        <p>
+          {{ 'Kéo ảnh hồ sơ vào đây' | translate }}
+        </p>
+        <p class="text-lowercase">- {{ 'hoặc' | translate }} -</p>
+        <label
+          *ngIf="!url"
+          class="btn-upload"
+          for="upload"
+          (click)="upload.click()"
+        >
+          {{ 'Chọn ảnh từ máy của bạn' | translate }}
+        </label>
+      </ng-container>
+    </div>
+  </div>
+</article>
+<mat-divider></mat-divider>
+<div mat-dialog-actions class="mt-5 text-center footer">
+  <button mat-button color="primary" (click)="onUpload()">
+    {{ 'Đặt làm ảnh hồ sơ' | translate }}
+  </button>
+  <button mat-button [mat-dialog-close]>{{ '_.cancel' | translate }}</button>
+</div>

@@ -1,3 +1,5 @@
+import { HomeComingSoonComponent } from './home-coming-soon/home-coming-soon.component';
+import { MovieNowShowingComponent } from './movie-now-showing/movie-now-showing.component';
 import { NowShowingComponent } from './../now-showing/now-showing.component';
 import { SuggetedComponent } from './suggeted/suggeted.component';
 import { BannerComponent } from './banner/banner.component';
@@ -14,6 +16,8 @@ import { SharedModule } from '@shared/shared.module';
     BannerComponent,
     SuggetedComponent,
     NowShowingComponent,
+    MovieNowShowingComponent,
+    HomeComingSoonComponent,
   ],
 })
 export class HomeModule {}

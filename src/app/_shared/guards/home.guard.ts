@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthorizeGuard implements CanActivate {
+export class HomeGuard implements CanActivate {
   constructor(
     private router: Router,
     private currentUserService: CurrentUserService
@@ -23,14 +23,18 @@ export class AuthorizeGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.currentUserService.getUserInfor().pipe(
-      map((e) => {
-        return true;
-      }),
-      catchError((err) => {
-        this.router.navigate(['/']);
-        return of(false);
-      })
-    );
+    const token = LocalStorageExtention.getToken();
+    if (token) {
+         return this.currentUserService.getUserInfor().pipe(
+           map((e) => {
+             return true;
+           }),
+           catchError((err) => {
+             this.router.navigate(['/']);
+             return of(false);
+           })
+         );
+    }
+    return of(true);
   }
 }

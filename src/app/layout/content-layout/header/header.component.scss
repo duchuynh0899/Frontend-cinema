@@ -58,13 +58,30 @@
   }
 
   .dasboard {
+    display: flex;
     z-index: 10000;
+    align-items: center;
+
     span {
       width: 3rem;
       height: 3rem;
       cursor: pointer;
       font-size: 2.5rem;
       color: white;
+    }
+
+    .icon {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .signin {
+      align-items: center;
+      p {
+        cursor: pointer;
+      }
+      > div {
+        align-items: center;
+      }
     }
   }
 }
@@ -82,3 +99,7 @@
 //   background-color: rgb(0, 0, 0); /* Fallback color */
 //   background-color: rgba(0, 0, 0, 0.4) !important;
 // }
+
+.avatar{
+  cursor: pointer;
+}

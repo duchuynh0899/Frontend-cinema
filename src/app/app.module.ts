@@ -1,3 +1,5 @@
+import { UploadPhotoComponent } from './modules/dashboard/upload-photo/upload-photo.component';
+import { MyProfileComponent } from './modules/dashboard/my-profile/my-profile.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 
@@ -22,6 +24,8 @@ import { ErrorInterceptor } from '@shared/interceptors/error.interceptor';
 import { ContentViewLayoutComponent } from './layout/content-view-layout/content-view-layout.component';
 import { HeaderContentViewComponent } from './layout/content-view-layout/header/header.component';
 import { ErrorHandlerService } from '@shared/services/error-handler.service';
+import { DashboardComponent } from '@modules/dashboard/dashboard.component';
+import { MyReservationsComponent } from '@modules/dashboard/my-reservations/my-reservations.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -35,6 +39,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HeaderComponent,
     MenuComponent,
     HeaderContentViewComponent,
+    MyReservationsComponent,
+    DashboardComponent,
+    MyProfileComponent,
+    UploadPhotoComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,4 +66,4 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

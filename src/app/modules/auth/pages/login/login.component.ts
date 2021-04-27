@@ -11,11 +11,12 @@ import { LanguageService } from '@shared/services/language.service';
 import { AuthorizeService } from '@shared/services/authorize.service';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { CurrentUserService } from '@shared/services/current-user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   checking = false;
@@ -23,7 +24,7 @@ export class LoginComponent {
   errorMsg: string;
   loading: boolean = true;
   hide = true;
-  getErrorMessage(): void { }
+  getErrorMessage(): void {}
 
   constructor(
     fb: FormBuilder,
@@ -31,7 +32,8 @@ export class LoginComponent {
     private router: Router,
     public languageService: LanguageService,
     private authlayoutService: AuthlayoutService,
-    private snack: MatSnackBar
+    private snack: MatSnackBar,
+    private currentUserService: CurrentUserService
   ) {
     this.myForm = fb.group({
       username: ['', TValidators.required],
@@ -39,18 +41,20 @@ export class LoginComponent {
     });
   }
 
-  submitForm() {
+  submitForm(): void {
     this.myForm.markAllAsTouched();
     if (this.myForm.invalid) {
       return;
     }
     this.authlayoutService.changeLoading(true);
 
-    this.authlayoutService.login(this.myForm.value)
+    this.authlayoutService
+      .login(this.myForm.value)
       .pipe(finalize(() => this.authlayoutService.changeLoading(false)))
       .subscribe(
-        res => {
+        (res) => {
           this.checking = true;
+          this.currentUserService.setCurrentUser(res.user);
           LocalStorageExtention.setToken(res.token);
           this.snack.open('Successs', 'End now', {
             duration: 500,
@@ -59,15 +63,13 @@ export class LoginComponent {
           });
           this.router.navigate(['/']);
         },
-        err => {
+        (err) => {
           this.snack.open(err.error.error.message);
-        });
+        }
+      );
   }
-
-
 
   // showPass() {
   //   this.hide = !this.hide;
   // }
-
 }

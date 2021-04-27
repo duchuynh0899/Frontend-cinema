@@ -1,0 +1,17 @@
+<div class="coming-soon">
+  <h2 class="p-5 text-white title">Coming soon</h2>
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+    (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)"
+    (afterChange)="afterChange($event)"
+    (beforeChange)="beforeChange($event)"
+  >
+    <div ngxSlickItem *ngFor="let slide of cinemas" class="p-3 slide">
+      <img src="{{ slide.url }}" alt="" width="100%" />
+      <span class="text-white description"> {{ slide.name }}</span>
+    </div>
+  </ngx-slick-carousel>
+</div>

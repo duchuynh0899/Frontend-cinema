@@ -8,6 +8,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { AvatarModule } from 'ngx-avatar';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 @NgModule({
   exports: [
     CommonModule,
@@ -20,6 +23,8 @@ import { TranslateModule } from '@ngx-translate/core';
     FontAwesomeModule,
     MatIconModule,
     TranslateModule,
-  ]
+    AvatarModule,
+    SlickCarouselModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
