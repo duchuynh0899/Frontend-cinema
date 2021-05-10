@@ -1,3 +1,19 @@
-<p>
-  coming-soon works!
-</p>
+<div class="main">
+  <div class="card-main">
+    <div class="child" *ngFor="let cinema of cinemas">
+      <div
+        class="background"
+        [ngStyle]="{
+          'background-image': 'url(' + cinema.url + ')'
+        }"
+      ></div>
+      <div class="content">
+        <div class="name">{{ cinema.name }}</div>
+        <div class="catogery"><span>Thể loại:</span> {{ cinema.catogery }}</div>
+        <div class="time"><span>Thời lượng:</span> {{ cinema.time }}</div>
+        <div class="premiere"><span>Khởi chiếu</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Huỳnh nguyễn @ 2021</div>
+</div>

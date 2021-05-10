@@ -2,8 +2,14 @@
   <h2 class="logo">Cinema+</h2>
   <div class="menu">
     <ul fxLayout="row" fxLayoutAlign="space-around center">
-      <li *ngFor="let item of listMenu" class="ml-4" class="menu-item">
-        <a class="item" [routerLink]="item.url">{{ item.name }}</a>
+      <li
+        *ngFor="let item of listMenu"
+        [routerLink]="item.url"
+        [routerLinkActive]="item.url !== '' ? 'active' : ''"
+        class="ml-4"
+        class="menu-item"
+      >
+        <a class="item">{{ item.name }}</a>
       </li>
     </ul>
   </div>

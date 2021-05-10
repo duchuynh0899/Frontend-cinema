@@ -1,3 +1,5 @@
+import { CinemasComponent } from './modules/cinemas/cinemas.component';
+import { ComingSoonComponent } from './modules/coming-soon/coming-soon.component';
 import { UploadPhotoComponent } from './modules/dashboard/upload-photo/upload-photo.component';
 import { MyProfileComponent } from './modules/dashboard/my-profile/my-profile.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -43,6 +45,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DashboardComponent,
     MyProfileComponent,
     UploadPhotoComponent,
+    ComingSoonComponent,
+    CinemasComponent,
   ],
   imports: [
     BrowserModule,

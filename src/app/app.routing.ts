@@ -1,3 +1,5 @@
+import { CinemasComponent } from './modules/cinemas/cinemas.component';
+import { ComingSoonComponent } from './modules/coming-soon/coming-soon.component';
 import { HomeGuard } from './_shared/guards/home.guard';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { NowShowingComponent } from './modules/now-showing/now-showing.component';
@@ -19,7 +21,20 @@ const routes: Routes = [
       },
       {
         path: 'now-showing',
+        canActivate: [HomeGuard],
         component: NowShowingComponent,
+        // loadChildren: () => import('@modules/auth/auth.module').then(m => m.AuthModule),
+      },
+      {
+        path: 'coming-soon',
+        canActivate: [HomeGuard],
+        component: ComingSoonComponent,
+        // loadChildren: () => import('@modules/auth/auth.module').then(m => m.AuthModule),
+      },
+      {
+        path: 'cinemas',
+        canActivate: [HomeGuard],
+        component: CinemasComponent,
         // loadChildren: () => import('@modules/auth/auth.module').then(m => m.AuthModule),
       },
       {

@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   listMenu = [
     { name: 'Home', url: '' },
     { name: 'Now Showing', url: 'now-showing' },
-    { name: 'Coming Soon', url: 'coming' },
+    { name: 'Coming Soon', url: 'coming-soon' },
     { name: 'Cinemas', url: 'cinemas' },
   ];
   scroll: number;
