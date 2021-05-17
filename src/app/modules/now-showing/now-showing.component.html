@@ -1,22 +1,19 @@
 <div class="main">
   <h2>Now showing</h2>
-  <div class="card" *ngFor="let cinema of cinemas">
+  <div class="card" *ngFor="let cinema of nowShowingMovies">
     <div class="card-body">
       <div class="main-card">
         <header>
-          <p class="title">{{ cinema.name }}</p>
-          <span class="name">By: David leitch</span>
+          <p class="title">{{ cinema.title }}</p>
+          <span class="name">By: {{cinema.director}}</span>
           <div class="time d-flex justify-content-between">
-            <p>120 min</p>
-            <span>adventure</span>
+            <p>{{cinema.duration}} min</p>
+            <span>{{cinema.genre}}</span>
           </div>
         </header>
         <div class="content">
           <p>
-            fast & furious is a media franchise centered on a series of action
-            films that are largely concerned with illegal street racing, heists
-            and spies. the franchise includes short films, a television series,
-            live shows, video games and theme park attra...
+           {{cinema.description}}
           </p>
         </div>
       </div>
@@ -24,7 +21,7 @@
         class="background"
         style="z-index: 1"
         [ngStyle]="{
-          'background-image': 'url(' + cinema.url + ')'
+          'background-image': 'url(' + cinema.image + ')'
         }"
       ></div>
     </div>

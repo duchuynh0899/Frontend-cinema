@@ -1,3 +1,5 @@
+import { DialogTrainerComponent } from './dialog-trainer/dialog-trainer.component';
+import { DetailMoviesComponent } from './detail-movies/detail-movies.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicColumnsComponent } from './dynamic-columns/dynamic-columns.component';
@@ -34,7 +36,9 @@ import { NoDataTableComponent } from './no-data-table/no-data-table.component';
     ConfirmDialogComponent,
     DialogFilterComponent,
     PaginatorComponent,
-    NoDataTableComponent
+    NoDataTableComponent,
+    DetailMoviesComponent,
+    DialogTrainerComponent
   ],
   exports: [
     DynamicColumnsComponent,
@@ -43,7 +47,7 @@ import { NoDataTableComponent } from './no-data-table/no-data-table.component';
     ConfirmDialogComponent,
     PaginatorComponent,
     DynamicFiltersComponent,
-    NoDataTableComponent
-  ]
+    NoDataTableComponent,
+  ],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

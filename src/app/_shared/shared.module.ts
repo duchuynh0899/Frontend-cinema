@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { AvatarModule } from 'ngx-avatar';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   exports: [
@@ -25,6 +26,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     TranslateModule,
     AvatarModule,
     SlickCarouselModule,
+    NgxSpinnerModule,
   ],
 })
 export class SharedModule {}

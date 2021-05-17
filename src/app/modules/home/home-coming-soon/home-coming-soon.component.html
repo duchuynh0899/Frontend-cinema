@@ -1,17 +1,21 @@
-<div class="coming-soon">
+<div class="now-showing">
   <h2 class="p-5 text-white title">Coming soon</h2>
   <ngx-slick-carousel
     class="carousel"
     #slickModal="slick-carousel"
     [config]="slideConfig"
-    (init)="slickInit($event)"
-    (breakpoint)="breakpoint($event)"
-    (afterChange)="afterChange($event)"
-    (beforeChange)="beforeChange($event)"
   >
-    <div ngxSlickItem *ngFor="let slide of cinemas" class="p-3 slide">
-      <img src="{{ slide.url }}" alt="" width="100%" />
-      <span class="text-white description"> {{ slide.name }}</span>
+    <div
+      ngxSlickItem
+      *ngFor="let slide of movies"
+      class="p-3 slide"
+    >
+      <img src="{{ slide.image }}" alt="" width="100%" />
+      <span class="text-white description"> {{ slide.title }}</span>
+      <div class="detail">
+        <button mat-flat-button color="accent" (click)="openDialog(slide.trainer)">Xem trainer</button>
+        <button mat-flat-button color="warn"  [routerLink]="['movie', slide._id]">Xem chi tiết</button>
+      </div>
     </div>
   </ngx-slick-carousel>
 </div>

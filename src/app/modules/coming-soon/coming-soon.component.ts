@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MoviesService } from '@shared/services/movies.service';
 
 @Component({
   selector: 'app-coming-soon',
@@ -6,81 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./coming-soon.component.scss'],
 })
 export class ComingSoonComponent implements OnInit {
-  cinemas: any[] = [
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: 'Fast & Furious',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/hpgda6P9GutvdkDX5MUJ92QG9aj.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: 'Avenger',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/stemLQMLDrlpfIlZ5OjllOPT8QX.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: 'Maleficent: Mistress Of Evil',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/skvI4rYFrKXS73BJxWGH54Omlvv.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: 'Fast & Furious',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/rtf4vjjLZLalpOzDUi0Qd2GTUqq.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: '‎Spider-Man: Into The Spider-Verse',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/rtf4vjjLZLalpOzDUi0Qd2GTUqq.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: '‎Spider-Man: Into The Spider-Verse',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/rtf4vjjLZLalpOzDUi0Qd2GTUqq.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: '‎Spider-Man: Into The Spider-Verse',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-    {
-      url:
-        'https://image.tmdb.org/t/p/original/rtf4vjjLZLalpOzDUi0Qd2GTUqq.jpg',
-      content:
-        'fast & furious is a media franchise centered on a series of action films that are largely concerned with illegal street racing, heists and spies. the franchise includes short films, a television series, live shows, video games and theme park attractions. it is distributed by universal pictures',
-      name: '‎Spider-Man: Into The Spider-Verse',
-      time: '120 min',
-      catogery: 'adventure',
-    },
-  ];
-  constructor() {}
+  cinemas: any[] = [];
+  comingSoon: any[];
+  nowDate: string;
+  constructor(private moviesService: MoviesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getNowDate();
+    this.getAllMovies();
+  }
+
+  getAllMovies(): void {
+    this.moviesService.getAllMovies().subscribe((res) => {
+      // this.cinemas = res;
+      this.comingSoon = res.filter((movie) => {
+        return movie.releaseDate >= this.nowDate;
+      });
+    });
+  }
+
+  getNowDate(): void {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    this.nowDate = mm + '/' + dd + '/' + yyyy;
+  }
 }

@@ -1,12 +1,11 @@
 import { CinemasComponent } from './modules/cinemas/cinemas.component';
-import { ComingSoonComponent } from './modules/coming-soon/coming-soon.component';
 import { UploadPhotoComponent } from './modules/dashboard/upload-photo/upload-photo.component';
 import { MyProfileComponent } from './modules/dashboard/my-profile/my-profile.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
@@ -28,6 +27,8 @@ import { HeaderContentViewComponent } from './layout/content-view-layout/header/
 import { ErrorHandlerService } from '@shared/services/error-handler.service';
 import { DashboardComponent } from '@modules/dashboard/dashboard.component';
 import { MyReservationsComponent } from '@modules/dashboard/my-reservations/my-reservations.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpInterceptor } from '@shared/interceptors/interceptors';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -45,12 +46,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DashboardComponent,
     MyProfileComponent,
     UploadPhotoComponent,
-    ComingSoonComponent,
     CinemasComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutes,
+    AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
@@ -62,12 +62,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       },
     }),
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000 } },
-    { provide: ErrorHandler, useClass: ErrorHandlerService },
-  ],
+  // providers: [
+  //   { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+  //   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  //   { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000 } },
+  //   { provide: ErrorHandler, useClass: ErrorHandlerService },
+  //   // { provide: HttpInterceptor }
+  // ],
+  providers: [HttpInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
