@@ -12,18 +12,19 @@
     margin-bottom: 30px;
   }
   .card-main {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0px auto;
     display: flex;
     flex-wrap: wrap;
     padding: 24px;
 
     .child {
+      flex-basis: 100%;
       flex: 1 0 19%;
       margin: 20px 30px 20px 30px;
       height: 380px;
       .background {
-        max-width: 205px;
+        max-width: 270px;
         height: 280px;
         background-size: cover;
         border: 2px solid white;

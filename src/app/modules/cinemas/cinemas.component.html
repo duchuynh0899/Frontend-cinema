@@ -1,7 +1,21 @@
 <div class="main">
   <div class="card-main">
-    <div class="child">
-      <div></div>
+    <div class="child" *ngFor="let item of cinemas">
+      <div class="image">
+        <img [src]="item.image" alt="" />
+      </div>
+      <div class="content">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.city }}</p>
+      </div>
+      <div class="price">
+        <mat-icon class="material-icons-outlined"> local_offer </mat-icon>
+        <p>{{ item.ticketPrice }} € per movie</p>
+      </div>
+      <div class="price">
+        <mat-icon class="material-icons-outlined"> chair </mat-icon>
+        <p>{{ item.seatsAvailable }} seats Available</p>
+      </div>
     </div>
   </div>
 </div>

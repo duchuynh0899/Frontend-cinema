@@ -1,6 +1,6 @@
 <div class="main">
   <h2>Now showing</h2>
-  <div class="card" *ngFor="let cinema of nowShowingMovies">
+  <div class="card" *ngFor="let cinema of nowShowingMovies" [routerLink]="['/movie', cinema._id]">
     <div class="card-body">
       <div class="main-card">
         <header>

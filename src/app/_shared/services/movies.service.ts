@@ -17,4 +17,10 @@ export class MoviesService {
   getCinemaById(id: string) {
     return this.httpClient.get<any>(`${this.baseUrl}/movies/${id}`);
   }
+
+  getMovieSuggested(username: string) {
+    return this.httpClient.get<any>(
+      `${this.baseUrl}/movies/usermodeling/${username}`
+    );
+  }
 }

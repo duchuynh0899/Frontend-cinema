@@ -1,0 +1,175 @@
+.booking {
+  display: flex;
+  padding-top: 6rem;
+  background-color: #1a1a1a;
+  gap: 25px;
+  .card {
+    > div {
+      height: 850px;
+      width: 450px;
+      position: relative;
+      background: #2a2c2f;
+      > div {
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 70%;
+        opacity: 0.8;
+        z-index: 1;
+        position: absolute;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      > span {
+        top: 60%;
+        color: #fff;
+        right: 0;
+        width: 100%;
+        z-index: 2;
+        position: absolute;
+        font-size: 24px;
+        text-align: center;
+        text-transform: capitalize;
+      }
+      .info {
+        top: 70%;
+        right: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        > div {
+          padding-top: 10px;
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+}
+.booking__seet {
+  max-width: 800px;
+  margin: 0px auto;
+  .seat {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(96, 93, 169);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    margin: 4px;
+    padding: 16px;
+    font-weight: 600;
+    border-radius: 2px;
+  }
+}
+.row {
+  > div {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 35px;
+  }
+}
+
+.description__seats {
+  text-align: center;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .seat {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-right: 8px;
+    > div {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      margin-right: 8px;
+    }
+  }
+  .seat:nth-child(1) {
+    > div {
+      background: rgb(96, 93, 169);
+    }
+  }
+  .seat:nth-child(2) {
+    > div {
+      background: rgb(65, 66, 70);
+    }
+  }
+  .seat:nth-child(3) {
+    > div {
+      background: rgb(120, 205, 4);
+    }
+  }
+}
+.action {
+  margin-top: 5rem;
+  display: flex;
+  width: 100%;
+  margin-left: 12rem;
+  color: white;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border-radius: 6px;
+  > .info {
+    flex-grow: 0;
+    max-width: 66.666667%;
+    flex-basis: 66.666667%;
+    background-color: #121418;
+    display: flex;
+    gap: 30px;
+    padding: 24px;
+    > .column {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      > span {
+        font-size: 16px;
+        text-transform: capitalize;
+      }
+      > span:nth-child(1) {
+        color: rgb(93, 93, 97);
+        font-size: 11.2px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      > span:nth-child(2) {
+        font-weight: 400;
+        color: #fff;
+      }
+    }
+  }
+  .checkout {
+    padding: 24px;
+    background-color: black;
+    color: white;
+    line-height: 50px;
+    cursor: pointer;
+  }
+}
+.qr-code {
+  text-align: center;
+}
+@media (max-width: 800px) {
+  .booking {
+    flex-direction: column;
+  }
+  .card {
+    > div {
+      width: auto !important;
+    }
+  }
+}
+.active {
+  background: rgb(120, 205, 4) !important;
+}
+.inactive {
+  background: rgb(218, 29, 4) !important;
+}

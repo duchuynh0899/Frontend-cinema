@@ -1,6 +1,10 @@
 <div class="home">
   <app-banner class="banner" [cinemas]="cinemas"></app-banner>
-  <app-suggeted class="suggeted"></app-suggeted>
+  <app-suggeted
+    *ngIf="movieSuggested"
+    class="suggeted"
+    [movieSuggested]="movieSuggested"
+  ></app-suggeted>
   <app-movie-now-showing [movies]="nowShowingMovies"></app-movie-now-showing>
   <app-home-coming-soon [movies]="comingSoon"></app-home-coming-soon>
 </div>

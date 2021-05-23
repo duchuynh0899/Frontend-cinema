@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PipesModule } from './pipes/pipes.module';
-import { MaterialModule } from './material.module';
-import { ComponentsModule } from './components/components.module';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
 import { AvatarModule } from 'ngx-avatar';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ComponentsModule } from './components/components.module';
+import { MaterialModule } from './material.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   exports: [

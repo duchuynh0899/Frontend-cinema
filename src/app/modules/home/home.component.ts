@@ -1,3 +1,4 @@
+import { CurrentUserService } from '@shared/services/current-user.service';
 import { IMovies } from './../../data/models/movies.model';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -21,9 +22,19 @@ export class HomeComponent {
   cinema: any;
   nowDate: any;
   comingSoon: any[];
-  constructor(private router: Router, private moviesService: MoviesService) {
+  movieSuggested: any[];
+  user: any;
+  constructor(
+    private router: Router,
+    private moviesService: MoviesService,
+    private currentUserService: CurrentUserService
+  ) {
+    this.currentUserService.user$.subscribe((user) => {
+      this.user = user;
+    });
     this.getAllMovies();
     this.getNowDate();
+    this.getSuggestedMovie();
   }
 
   ngOnInit(): void {
@@ -43,7 +54,6 @@ export class HomeComponent {
         return Date.parse(movie.releaseDate) >= Date.parse(this.nowDate);
       });
       console.log(this.comingSoon);
-
     });
   }
 
@@ -53,5 +63,13 @@ export class HomeComponent {
     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     const yyyy = today.getFullYear();
     this.nowDate = mm + '/' + dd + '/' + yyyy;
+  }
+
+  getSuggestedMovie() {
+    this.moviesService
+      .getMovieSuggested(this.user?.username)
+      .subscribe((res) => {
+        this.movieSuggested = res;
+      });
   }
 }

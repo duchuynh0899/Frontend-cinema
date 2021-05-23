@@ -1,6 +1,6 @@
 <div class="main">
   <div class="card-main">
-    <div class="child" *ngFor="let cinema of comingSoon">
+    <div class="child" *ngFor="let cinema of comingSoon" [routerLink]="['/movie', cinema._id]">
       <div
         class="background"
         [ngStyle]="{

@@ -1,3 +1,4 @@
+import { BookingMovieComponent } from './_shared/components/booking-movie/booking-movie.component';
 import { CinemasComponent } from './modules/cinemas/cinemas.component';
 import { ComingSoonComponent } from './modules/coming-soon/coming-soon.component';
 import { HomeGuard } from './_shared/guards/home.guard';
@@ -42,13 +43,16 @@ const routes: Routes = [
         path: 'cinemas',
         canActivate: [HomeGuard],
         component: CinemasComponent,
-        loadChildren: () =>
-          import('@modules/auth/auth.module').then((m) => m.AuthModule),
       },
       {
         path: 'dash-board',
         canActivate: [AuthorizeGuard],
         component: DashboardComponent,
+      },
+      {
+        path: 'movie/booking/:id',
+        canActivate: [HomeGuard],
+        component: BookingMovieComponent,
       },
       // {
       //   path: ':id',

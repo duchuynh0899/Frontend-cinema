@@ -4,7 +4,7 @@
 
 html {
   height: 100vh;
-  background-color: black;
+  background-color: #1a1a1a;
   body {
     height: 100vh;
     box-sizing: border-box;
@@ -108,4 +108,40 @@ html {
 
 .mat-drawer-content {
   overflow: hidden !important;
+}
+
+// .mat-select-panel {
+//   background: #424242;
+// }
+.booking {
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+
+  input.mat-input-element {
+    color: white;
+  }
+
+  .mat-form-field-empty.mat-form-field-label {
+    color: white;
+  }
+
+  .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+    .mat-form-field-label,
+  .mat-form-field-appearance-outline.mat-form-field-can-float
+    .mat-input-server:focus
+    + .mat-form-field-label-wrapper
+    .mat-form-field-label {
+    transform: translateY(-1.59375em) scale(0.75);
+    width: 133.3333333333%;
+    color: white;
+  }
+
+  .mat-select-value {
+    color: antiquewhite;
+  }
+
+  .mat-select-arrow {
+    color: white;
+  }
 }

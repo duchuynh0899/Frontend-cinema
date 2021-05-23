@@ -1,10 +1,12 @@
 <div class="main">
   <div
-  *ngIf="cinema?.image"
+    *ngIf="cinema?.image"
     [ngStyle]="{ 'background-image': 'url(' + cinema?.image + ')' }"
     class="banner"
   >
-    <a class="text-white to-detail"> Learn More</a>
+    <a class="text-white to-detail" [routerLink]="['movie', cinema._id]">
+      Learn More</a
+    >
   </div>
 
   <div class="cinema-detail" style="z-index: 100">
