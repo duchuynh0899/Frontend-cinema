@@ -9,6 +9,7 @@ import { AuthorizeGuard } from '@shared/guards/authorize.guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { NgModule } from '@angular/core';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,12 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     loadChildren: () =>
       import('@modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    loadChildren: () =>
+      import('@modules/admin/admin.module').then((m) => m.AdminModule),
   },
 
   { path: '**', redirectTo: '/404' },

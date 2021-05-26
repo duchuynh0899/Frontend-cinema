@@ -10,23 +10,23 @@ export class NowShowingComponent implements OnInit {
   cinemas: any[] = [];
   nowShowingMovies: any[];
   nowDate: string;
+  p = 1;
+
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit() {
     this.getNowDate();
     this.getAllMovies();
     console.log(this.nowShowingMovies);
-
   }
 
   getAllMovies(): void {
     this.moviesService.getAllMovies().subscribe((res) => {
       // this.cinemas = res;
-     this.nowShowingMovies = res.filter((movie) => {
-       return Date.parse(movie.releaseDate) <= Date.parse(this.nowDate);
-     });
+      this.nowShowingMovies = res.filter((movie) => {
+        return Date.parse(movie.releaseDate) <= Date.parse(this.nowDate);
+      });
       console.log(this.nowShowingMovies);
-
     });
   }
 

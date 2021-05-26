@@ -11,6 +11,8 @@ import { HttpInterceptor } from '@shared/interceptors/interceptors';
 import { SharedModule } from '@shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { HeaderAdminComponent } from './layout/admin-layout/header-admin/header-admin.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { HeaderComponent } from './layout/content-layout/header/header.component';
@@ -39,6 +41,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     UploadPhotoComponent,
     CinemasComponent,
     DetailMoviesComponent,
+    AdminLayoutComponent,
+    HeaderAdminComponent,
   ],
   imports: [
     BrowserModule,

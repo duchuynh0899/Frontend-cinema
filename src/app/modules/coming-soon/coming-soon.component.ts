@@ -10,6 +10,8 @@ export class ComingSoonComponent implements OnInit {
   cinemas: any[] = [];
   comingSoon: any[];
   nowDate: string;
+  p = 1;
+
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit() {

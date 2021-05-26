@@ -1,12 +1,13 @@
-<h2 mat-dialog-title>
+<!-- <h2 mat-dialog-title>
   {{ 'Cập nhật ảnh đại diện của bạn' | translate }}
 </h2>
-<mat-divider></mat-divider>
+<mat-divider></mat-divider> -->
 <article mat-dialog-content class="upload">
   <input #upload type="file" (change)="onSelectFile($event)" accept="image/*" />
   <div class="body">
     <div class="main">
       <img
+        class="image--upload"
         [src]="url || 'assets/images/upload_photo.png'"
         (click)="upload.click()"
         alt="upload icon"
@@ -29,7 +30,7 @@
   </div>
 </article>
 <mat-divider></mat-divider>
-<div mat-dialog-actions class="mt-5 text-center footer">
+<div mat-dialog-actions class="footer">
   <button mat-button color="primary" (click)="onUpload()">
     {{ 'Đặt làm ảnh hồ sơ' | translate }}
   </button>

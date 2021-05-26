@@ -129,6 +129,8 @@ export class BookingMovieComponent implements OnInit {
   }
 
   showSeat($event): void {
+    console.log('1', this.myForm.get('time').value);
+
     this.show = true;
   }
 
@@ -139,7 +141,7 @@ export class BookingMovieComponent implements OnInit {
       movieId: this.movie?._id,
       phone: this.currentUser.phone,
       seats: this.seatSelected,
-      startAt: this.myForm.get('time').value,
+      startAt: this.myForm.get('time').value.startAt,
       ticketPrice: this.price,
       total: this.tickets,
       username: this.currentUser.username,

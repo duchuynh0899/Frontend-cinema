@@ -5,23 +5,24 @@ import { DateDisplayPipe } from './date-display.pipe';
 import { DeviceTypeIconPipe } from './device-type-icon.pipe';
 import { LogoPipe } from './logo.pipe';
 import { TwoStepPipe } from './two-step.pipe';
+import { FormatDatePipe } from './format-date.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [
     FilterDisplayPipe,
     DateDisplayPipe,
     DeviceTypeIconPipe,
     LogoPipe,
-    TwoStepPipe
+    TwoStepPipe,
+    FormatDatePipe,
   ],
   exports: [
     FilterDisplayPipe,
     DateDisplayPipe,
     DeviceTypeIconPipe,
     LogoPipe,
-  ]
+    FormatDatePipe,
+  ],
 })
-export class PipesModule { }
+export class PipesModule {}

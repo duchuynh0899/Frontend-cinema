@@ -11,7 +11,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ComponentsModule } from './components/components.module';
 import { MaterialModule } from './material.module';
 import { PipesModule } from './pipes/pipes.module';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   exports: [
     CommonModule,
@@ -27,6 +27,7 @@ import { PipesModule } from './pipes/pipes.module';
     AvatarModule,
     SlickCarouselModule,
     NgxSpinnerModule,
+    NgxPaginationModule
   ],
 })
 export class SharedModule {}

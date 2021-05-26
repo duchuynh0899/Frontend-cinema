@@ -9,13 +9,15 @@
       <span>By:{{ cinema?.director }}</span>
       <span>Time: {{ cinema?.duration }}</span>
       <span> Category: {{ cinema?.genre }}</span>
-      <button
-        mat-flat-button
-        color="accent"
-        [routerLink]="['/movie/booking', id]"
-      >
-        Mua vé
-      </button>
+      <div class="text-center mt-3">
+        <button
+          mat-flat-button
+          color="accent"
+          [routerLink]="['/movie/booking', id]"
+        >
+          Buy ticket
+        </button>
+      </div>
     </div>
   </div>
 </div>

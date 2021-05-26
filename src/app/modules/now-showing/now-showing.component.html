@@ -1,19 +1,26 @@
 <div class="main">
   <h2>Now showing</h2>
-  <div class="card" *ngFor="let cinema of nowShowingMovies" [routerLink]="['/movie', cinema._id]">
+  <div
+    class="card"
+    *ngFor="
+      let cinema of nowShowingMovies
+        | paginate: { itemsPerPage: 8, currentPage: p }
+    "
+    [routerLink]="['/movie', cinema._id]"
+  >
     <div class="card-body">
       <div class="main-card">
         <header>
           <p class="title">{{ cinema.title }}</p>
-          <span class="name">By: {{cinema.director}}</span>
+          <span class="name">By: {{ cinema.director }}</span>
           <div class="time d-flex justify-content-between">
-            <p>{{cinema.duration}} min</p>
-            <span>{{cinema.genre}}</span>
+            <p>{{ cinema.duration }} min</p>
+            <span>{{ cinema.genre }}</span>
           </div>
         </header>
         <div class="content">
           <p>
-           {{cinema.description}}
+            {{ cinema.description }}
           </p>
         </div>
       </div>
@@ -26,5 +33,9 @@
       ></div>
     </div>
   </div>
+  <div class="w-100 text-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+
   <div class="footer">Huỳnh nguyễn @ 2021</div>
 </div>

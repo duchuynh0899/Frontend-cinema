@@ -23,4 +23,8 @@ export class ReservationsService {
   }) {
     return this.httpClient.post<any>(`${this.baseUrl}`, body);
   }
+
+  getReservations() {
+    return this.httpClient.get<any>(`${this.baseUrl}`);
+  }
 }

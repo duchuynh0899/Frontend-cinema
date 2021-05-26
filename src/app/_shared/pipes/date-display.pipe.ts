@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 
 @Pipe({
-  name: 'dateDisplay'
+  name: 'dateDisplay',
 })
-export class DateDisplayPipe extends DatePipe implements PipeTransform {
-
-  transform(value: any, args?: any): any {
-    return super.transform(value, 'dd/MM/yyyy');
+export class DateDisplayPipe implements PipeTransform {
+  transform(date: any, args?: any): any {
+    const d = new Date(date);
+    return moment(d).format('DD/MM/YYYY');
   }
-
 }

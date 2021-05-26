@@ -1,6 +1,12 @@
 <div class="main">
   <div class="card-main">
-    <div class="child" *ngFor="let cinema of comingSoon" [routerLink]="['/movie', cinema._id]">
+    <div
+      class="child"
+      *ngFor="
+        let cinema of comingSoon | paginate: { itemsPerPage: 8, currentPage: p }
+      "
+      [routerLink]="['/movie', cinema._id]"
+    >
       <div
         class="background"
         [ngStyle]="{
@@ -14,6 +20,12 @@
         <div class="premiere"><span>Khởi chiếu</span></div>
       </div>
     </div>
+  </div>
+  <div class="w-100 text-center">
+    <pagination-controls
+      (pageChange)="p = $event"
+      maxSize="9"
+    ></pagination-controls>
   </div>
   <div class="footer">Huỳnh nguyễn @ 2021</div>
 </div>

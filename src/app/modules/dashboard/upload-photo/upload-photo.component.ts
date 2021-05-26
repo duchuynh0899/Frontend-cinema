@@ -13,12 +13,14 @@ export class UploadPhotoComponent implements OnInit {
   url: string | ArrayBuffer;
   id: any;
   files: any;
+  user: any;
   constructor(
     private snack: MatSnackBar,
     private currentUserService: CurrentUserService,
     private fileService: FileServiceService
   ) {
     this.currentUserService.user$.subscribe((user) => {
+      this.user = user;
       this.id = user._id;
     });
   }
