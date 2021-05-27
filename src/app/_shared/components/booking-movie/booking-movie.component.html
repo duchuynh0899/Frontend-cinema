@@ -79,14 +79,17 @@
             *ngFor="let row of seats; let rowItem = index"
             class="d-flex flex-nowrap"
           >
-            <div
+            <button
+              mat-flat-button
               *ngFor="let seat of row; let col = index"
               class="seat"
               (click)="selectSeat([rowItem, col])"
               [ngClass]="selectedSeat([rowItem, col])"
+              [disabled]="seat === 1"
+              [style.background]="seat === 1 ? 'rgb(93, 93, 97)' : ''"
             >
               <span>{{ col + 1 }}</span>
-            </div>
+            </button>
           </div>
         </div>
       </div>

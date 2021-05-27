@@ -113,7 +113,7 @@
   margin-top: 5rem;
   display: flex;
   width: 100%;
-  margin-left: 12rem;
+  justify-content: center;
   color: white;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -172,4 +172,7 @@
 }
 .inactive {
   background: rgb(218, 29, 4) !important;
+}
+.disabled {
+  background: #1a1a1a !important;
 }

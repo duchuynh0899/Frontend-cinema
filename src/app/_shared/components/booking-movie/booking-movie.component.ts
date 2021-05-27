@@ -7,6 +7,8 @@ import { MoviesService } from '@shared/services/movies.service';
 import { ReservationsService } from '@shared/services/reservations.service';
 import { CinemasService } from './../../services/cinemas.service';
 import { ShowtimesService } from './../../services/showtimes.service';
+import { concat } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-booking-movie',
@@ -32,7 +34,11 @@ export class BookingMovieComponent implements OnInit {
   tickets: number;
   currentUser: any;
   detailSeservations: any;
-
+  reverse: any[];
+  btnDisabled;
+  seatBuy: any;
+  seat: any;
+  seatBought = [];
   constructor(
     private fb: FormBuilder,
     private moviesService: MoviesService,
@@ -58,6 +64,7 @@ export class BookingMovieComponent implements OnInit {
     this.getMovie();
     this.getCinema();
     this.getShowTime();
+    this.getReverse();
   }
 
   selectSeat(item: any): void {
@@ -76,12 +83,6 @@ export class BookingMovieComponent implements OnInit {
 
   selectedSeat(item) {
     const hash = {};
-    // this.seatsSur.map((x) => {
-    //   console.log(x[0] === item[0] && x[1] === item[1]);
-    //   if ((x[0] === item[0]) === true && (x[1] === item[1]) === true) {
-    //     return 'inactive';
-    //   }
-    // });
     for (var i = 0; i < this.seatSelected.length; i += 1) {
       hash[this.seatSelected[i]] = i;
       if (hash.hasOwnProperty(item)) {
@@ -129,9 +130,13 @@ export class BookingMovieComponent implements OnInit {
   }
 
   showSeat($event): void {
-    console.log('1', this.myForm.get('time').value);
-
-    this.show = true;
+    this.getReverse()
+      .pipe(
+        tap((x) => {
+          this.show = true;
+        })
+      )
+      .subscribe();
   }
 
   checkOut() {
@@ -157,4 +162,49 @@ export class BookingMovieComponent implements OnInit {
       }
     );
   }
+
+  getReverse() {
+    return this.reservationsService.getReservations().pipe(
+      tap((res) => {
+        this.reverse = res.filter((x) => {
+          return (
+            x.movieId === this.movie?._id &&
+            x.cinemaId === this.myForm.get('cinema').value?._id &&
+            Date.parse(x.date) === Date.parse(this.myForm.get('day').value) &&
+            x.startAt === this.myForm.get('time').value.startAt
+          );
+        });
+        this.reverse.forEach((reverse) => {
+          reverse.seats.forEach((element) => {
+            this.seatBought.push(element);
+          });
+        });
+
+        for (let i = 0; i < this.seats.length; i++) {
+          for (let j = 0; j < this.seats.length; j++) {
+            // tslint:disable-next-line:prefer-for-of
+            for (let k = 0; k < this.seatBought.length; k++) {
+              if (
+                JSON.stringify([i, j]) === JSON.stringify(this.seatBought[k])
+              ) {
+                this.seats[i][j] = 1;
+              }
+            }
+          }
+        }
+        console.log(this.seats);
+      })
+    );
+  }
+
+  // check(item) {
+  //   this.reverse.forEach((x) => {
+  //     x.seats.forEach((element) => {
+  //       if (element[0] === item[0] && element[1] === item[1]) {
+  //         console.log('dung roi nay');
+  //         return 'disabled';
+  //       }
+  //     });
+  //   });
+  // }
 }
