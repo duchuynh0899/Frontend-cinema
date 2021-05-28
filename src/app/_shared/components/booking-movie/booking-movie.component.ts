@@ -177,11 +177,12 @@ export class BookingMovieComponent implements OnInit {
         this.reverse.forEach((reverse) => {
           reverse.seats.forEach((element) => {
             this.seatBought.push(element);
+            console.log(this.seatBought);
           });
         });
 
         for (let i = 0; i < this.seats.length; i++) {
-          for (let j = 0; j < this.seats.length; j++) {
+          for (let j = 0; j < this.seats[i].length; j++) {
             // tslint:disable-next-line:prefer-for-of
             for (let k = 0; k < this.seatBought.length; k++) {
               if (
