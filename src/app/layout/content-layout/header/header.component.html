@@ -14,12 +14,17 @@
     </ul>
   </div>
   <div class="dasboard">
-    <ng-container *ngIf="currentUser.imageurl; else noAvatar">
-      <ngx-avatar
-        class="material-icons avatar"
-        [src]="currentUser.imageurl"
-        [matMenuTriggerFor]="menu"
-      ></ngx-avatar>
+    <ng-container *ngIf="currentUser; else noAvatar">
+      <ng-container *ngIf="currentUser.imageurl; else elseTemplate">
+        <ngx-avatar
+          class="material-icons avatar"
+          [src]="currentUser.imageurl"
+          [matMenuTriggerFor]="menu"
+        ></ngx-avatar>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <ngx-avatar [name]="currentUser.username"></ngx-avatar>
+      </ng-template>
     </ng-container>
     <ng-template #noAvatar>
       <div fxLayout="row" class="signin">
