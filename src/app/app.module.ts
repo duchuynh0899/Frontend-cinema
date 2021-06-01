@@ -22,6 +22,15 @@ import { HeaderContentViewComponent } from './layout/content-view-layout/header/
 import { CinemasComponent } from './modules/cinemas/cinemas.component';
 import { MyProfileComponent } from './modules/dashboard/my-profile/my-profile.component';
 import { UploadPhotoComponent } from './modules/dashboard/upload-photo/upload-photo.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -50,6 +59,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
+    FullCalendarModule ,
+    NgxPermissionsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

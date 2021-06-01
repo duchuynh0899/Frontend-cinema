@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  pusher: {
+    key: '8851a381c185ede1098d',
+    cluster: 'ap1',
+  },
   apiURL: 'https://server-cinema.herokuapp.com',
 };
 

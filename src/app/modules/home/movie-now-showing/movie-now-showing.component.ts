@@ -9,7 +9,7 @@ import { DialogTrainerComponent } from '@shared/components/dialog-trainer/dialog
 })
 export class MovieNowShowingComponent implements OnInit {
   @Input() movies: any;
-  slideConfig = { slidesToShow: 3, slidesToScroll: 3 };
+  slideConfig = { slidesToShow: 3, slidesToScroll: 1 };
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}

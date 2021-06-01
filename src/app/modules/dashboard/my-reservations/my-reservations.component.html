@@ -4,13 +4,13 @@
       <!-- Position Column -->
       <ng-container matColumnDef="Movie">
         <th mat-header-cell *matHeaderCellDef>Movie</th>
-        <td mat-cell *matCellDef="let element">{{ element._id }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.movieId.title }}</td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="Cinema">
         <th mat-header-cell *matHeaderCellDef>Cinema</th>
-        <td mat-cell *matCellDef="let element">{{ element.cinemaId }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.cinemaId.name }}</td>
       </ng-container>
 
       <!-- Weight Column -->

@@ -27,4 +27,8 @@ export class ReservationsService {
   getReservations() {
     return this.httpClient.get<any>(`${this.baseUrl}`);
   }
+
+  getMyReservations(username: string) {
+    return this.httpClient.get<any>(`${this.baseUrl}/${username}`);
+  }
 }

@@ -32,4 +32,8 @@ export class UsersService {
   }) {
     return this.httpClient.patch<any>(`${this.baseUrl}/me`, body);
   }
+
+  getAlluser() {
+    return this.httpClient.get<any>(`${this.baseUrl}`);
+  }
 }

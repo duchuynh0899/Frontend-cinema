@@ -51,7 +51,7 @@ export class MyProfileComponent implements OnInit {
       return;
     }
     this.user.updateUser(data).subscribe((res) => {
-      this.snack.open('success');
+      this.snack.open('success', 'x');
     });
   }
 }

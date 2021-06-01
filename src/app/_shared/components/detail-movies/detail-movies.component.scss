@@ -4,7 +4,7 @@
   background-color: #1a1a1a;
   height: 100%;
 
-  > div {
+  .main {
     max-width: 1400px;
     margin: 0px auto;
     display: flex;
@@ -42,5 +42,13 @@
         font-size: 18px;
       }
     }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .detail{
+    padding: 1rem;
+  }
+  .main {
+    flex-wrap: wrap;
   }
 }

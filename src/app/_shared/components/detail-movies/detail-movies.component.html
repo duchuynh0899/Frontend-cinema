@@ -1,5 +1,5 @@
 <div class="detail">
-  <div>
+  <div class="main">
     <div class="image">
       <img [src]="cinema?.image" alt="" />
     </div>
@@ -10,6 +10,7 @@
       <span>Time: {{ cinema?.duration }}</span>
       <span> Category: {{ cinema?.genre }}</span>
       <div class="text-center mt-3">
+        <button class="mr-2" mat-flat-button color="primary" (click)="showtime()">Show time</button>
         <button
           mat-flat-button
           color="accent"
@@ -20,5 +21,11 @@
       </div>
     </div>
   </div>
-  <div></div>
+  <div class="main">
+    <full-calendar
+    *ngIf="show"
+      [options]="calendarOptions"
+      class="w-75 h-75"
+    ></full-calendar>
+  </div>
 </div>

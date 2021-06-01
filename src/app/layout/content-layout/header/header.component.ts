@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
     { name: 'Cinemas', url: 'cinemas' },
   ];
   scroll: number;
+  userTrue: boolean;
   constructor(
     private router: Router,
     private renderer: Renderer2,
@@ -36,6 +37,11 @@ export class HeaderComponent implements OnInit {
   protected destroy$ = new Subject();
   ngOnInit(): void {
     this.checkOffset();
+    if (localStorage.getItem('currentUser')) {
+      this.userTrue = true;
+    } else {
+      this.userTrue = false;
+    }
     this.currentUserService.user$
       .pipe(takeUntil(this.destroy$))
       .subscribe((user) => {
@@ -51,6 +57,6 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.router.navigate(['/auth/login']);
-    LocalStorageExtention.deleteToken('token');
+    localStorage.clear();
   }
 }

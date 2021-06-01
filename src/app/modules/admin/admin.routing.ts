@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 import { AccountComponent } from './account/account.component';
 import { CinemasAdminComponent } from './cinemas-admin/cinemas-admin.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
@@ -9,6 +10,12 @@ import { ShowtimesAdminComponent } from './showtimes-admin/showtimes-admin.compo
 const routes: Routes = [
   {
     path: '',
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: 'superadmin',
+      },
+    },
     children: [
       { path: 'dashboard', component: DashboardAdminComponent },
       {

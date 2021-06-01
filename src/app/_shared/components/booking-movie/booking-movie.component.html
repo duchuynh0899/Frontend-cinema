@@ -124,7 +124,7 @@
             <span>{{ price }} $</span>
           </div>
         </div>
-        <div class="checkout btn" (click)="checkOut()">Checkout</div>
+        <div class="checkout btn" (click)="checkOut()" id="paypal-button">Checkout</div>
       </div>
       <div class="qr-code" *ngIf="!show">
         <h2 class="text-white" *ngIf="detailSeservations?.QRCode">

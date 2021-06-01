@@ -1,6 +1,7 @@
+import { PusherService } from './../../services/pusher.service';
 import { CurrentUserService } from '@shared/services/current-user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '@shared/services/movies.service';
@@ -16,6 +17,7 @@ import { switchMap, tap } from 'rxjs/operators';
   styleUrls: ['./booking-movie.component.scss'],
 })
 export class BookingMovieComponent implements OnInit {
+  @ViewChild('paypal-button') demoInput: ElementRef;
   myForm: FormGroup;
   seats: any[];
   seatsSur = [
@@ -39,6 +41,22 @@ export class BookingMovieComponent implements OnInit {
   seatBuy: any;
   seat: any;
   seatBought = [];
+  likes: any;
+  cost = '1';
+  currency = 'INR';
+  selectedCurrency = '0';
+  currencies: any[] = [
+    {
+      value: '0',
+      viewValue: 'Select Currency',
+    },
+    {
+      value: 'USD',
+      viewValue: 'US Dollar',
+    },
+  ];
+  alert = false;
+
   constructor(
     private fb: FormBuilder,
     private moviesService: MoviesService,
@@ -47,12 +65,22 @@ export class BookingMovieComponent implements OnInit {
     private route: ActivatedRoute,
     private reservationsService: ReservationsService,
     private snack: MatSnackBar,
-    private currentUserService: CurrentUserService
+    private currentUserService: CurrentUserService,
+    private pusherService: PusherService
   ) {
     this.myForm = fb.group({
       cinema: [null],
       day: [null],
       time: [null],
+    });
+  }
+
+  private loadExternalScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
     });
   }
 
@@ -65,6 +93,28 @@ export class BookingMovieComponent implements OnInit {
     this.getCinema();
     this.getShowTime();
     this.getReverse();
+    this.alert = true;
+    this.pusherService.channel.bind('new-like', (data) => {
+      setTimeout(() => {
+        this.likes = data.likes;
+        this.likes.seats.forEach((element) => {
+          return this.snack.open(
+            `Seating tickets row ${element[0] + 1} column ${
+              element[1] + 1
+            } have been sold`,
+            'x',
+            {
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+            }
+          );
+        });
+        if (this.alert) {
+          this.getReverse().subscribe();
+        }
+      }, 300);
+    });
+    this.loadExternalScript('https://www.paypalobjects.com/api/checkout.js');
   }
 
   selectSeat(item: any): void {
@@ -168,8 +218,8 @@ export class BookingMovieComponent implements OnInit {
       tap((res) => {
         this.reverse = res.filter((x) => {
           return (
-            x.movieId === this.movie?._id &&
-            x.cinemaId === this.myForm.get('cinema').value?._id &&
+            x.movieId._id === this.movie?._id &&
+            x.cinemaId._id === this.myForm.get('cinema').value?._id &&
             Date.parse(x.date) === Date.parse(this.myForm.get('day').value) &&
             x.startAt === this.myForm.get('time').value.startAt
           );
@@ -197,6 +247,49 @@ export class BookingMovieComponent implements OnInit {
       })
     );
   }
+
+  // paymentSuccess(payment) {
+  //   //alert('Payment Success');
+  // }
+  // CurrencyChange(cost, selectedCurreny, self): void {
+  //   document.getElementById('paypal-button').innerHTML = '';
+  //   if (selectedCurreny == 0) {
+  //     alert('Please select the Country');
+  //     return;
+  //   }
+  //   //reset earlier inserted paypal button
+  //   window.paypal.Button.render(
+  //     {
+  //       env: 'sandbox',
+  //       client: {
+  //         production:
+  //           'AQ9IbOayBJxHmad9DMGoysS4UhzE-usUqfSQ-CLzSn3M96qvZny5vZZ2VkNzn6EBTnE2UU4L8PDkqJJE',
+  //         sandbox:
+  //           'AQ9IbOayBJxHmad9DMGoysS4UhzE-usUqfSQ-CLzSn3M96qvZny5vZZ2VkNzn6EBTnE2UU4L8PDkqJJE',
+  //       },
+  //       commit: true,
+  //       payment: function (data, actions) {
+  //         return actions.payment.create({
+  //           payment: {
+  //             transactions: [
+  //               {
+  //                 amount: { total: cost, currency: selectedCurreny },
+  //               },
+  //             ],
+  //           },
+  //         });
+  //       },
+  //       onAuthorize: function (data, actions) {
+  //         return actions.payment.execute().then(function (payment) {
+  //           alert('Payment Successful');
+  //           self.paymentSuccess(payment);
+  //           console.log(payment);
+  //         });
+  //       },
+  //     },
+  //     this.demoInput.nativeElement
+  //   );
+  // }
 
   // check(item) {
   //   this.reverse.forEach((x) => {

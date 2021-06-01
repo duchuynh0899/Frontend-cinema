@@ -1,3 +1,46 @@
-<p>
-  dashboard-admin works!
-</p>
+<div class="dashboard">
+  <div class="header mt-5" *ngIf="users">
+    <div class="card">
+      <div class="d-flex flex-column">
+        <span>Total Users</span>
+        <span>{{users?.length + 1}}</span>
+      </div>
+      <mat-icon>people</mat-icon>
+    </div>
+    <div class="card">
+      <div class="d-flex flex-column">
+        <span>Total CINEMAS</span>
+        <span>{{cinemas?.length + 1}}</span>
+      </div>
+      <mat-icon>airplay</mat-icon>
+    </div>
+    <div class="card">
+      <div class="d-flex flex-column">
+        <span>Total MOVIES</span>
+        <span>{{movies?.length + 1}}</span>
+      </div>
+      <mat-icon>movie</mat-icon>
+    </div>
+    <div class="card">
+      <div class="d-flex flex-column">
+        <span>Total RESERVATIONS</span>
+        <span>{{reservations.length + 1}}</span>
+      </div>
+      <mat-icon>watch_later</mat-icon>
+    </div>
+  </div>
+  <div class="main mt-5">
+    <div class="left">
+      <h2 class="text-white">Best Movies</h2>
+      <app-chart-best-movie></app-chart-best-movie>
+    </div>
+    <div class="right">
+      <h2 class="text-white">Sales</h2>
+      <app-chart-detail-movie></app-chart-detail-movie>
+    </div>
+  </div>
+</div>
+<div class="bottom">
+  <span class="text-white ml-3 mb-5">Huỳnh Nguyễn</span>
+  <div class="divider mt-3"></div>
+</div>

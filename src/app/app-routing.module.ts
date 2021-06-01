@@ -10,6 +10,7 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { NgModule } from '@angular/core';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 const routes: Routes = [
   {
@@ -70,6 +71,7 @@ const routes: Routes = [
 
   {
     path: 'admin',
+    canActivate: [AuthorizeGuard],
     component: AdminLayoutComponent,
     loadChildren: () =>
       import('@modules/admin/admin.module').then((m) => m.AdminModule),

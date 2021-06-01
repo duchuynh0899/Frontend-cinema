@@ -12,6 +12,8 @@ import { ComponentsModule } from './components/components.module';
 import { MaterialModule } from './material.module';
 import { PipesModule } from './pipes/pipes.module';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxPermissionsModule } from 'ngx-permissions';
 @NgModule({
   exports: [
     CommonModule,
@@ -27,7 +29,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AvatarModule,
     SlickCarouselModule,
     NgxSpinnerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxChartsModule,
+    NgxPermissionsModule
   ],
 })
 export class SharedModule {}

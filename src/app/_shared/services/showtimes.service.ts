@@ -13,4 +13,8 @@ export class ShowtimesService {
   getShowTimes() {
     return this.httpClient.get<any>(`${this.baseUrl}`);
   }
+
+  getShowtimeMovieById(id: string) {
+    return this.httpClient.get<any>(`${this.baseUrl}/${id}`);
+  }
 }

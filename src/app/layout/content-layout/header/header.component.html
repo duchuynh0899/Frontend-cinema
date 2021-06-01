@@ -14,19 +14,23 @@
     </ul>
   </div>
   <div class="dasboard">
-    <ng-container *ngIf="currentUser; else noAvatar">
-      <ng-container *ngIf="currentUser.imageurl; else elseTemplate">
+    <ng-container *ngIf="userTrue; else noUser">
+      <ng-container *ngIf="currentUser.imageurl; else noAvatar">
         <ngx-avatar
           class="material-icons avatar"
           [src]="currentUser.imageurl"
           [matMenuTriggerFor]="menu"
         ></ngx-avatar>
       </ng-container>
-      <ng-template #elseTemplate>
-        <ngx-avatar [name]="currentUser.username"></ngx-avatar>
+      <ng-template #noAvatar>
+        <ngx-avatar
+          class="material-icons avatar"
+          [name]="currentUser.username"
+          [matMenuTriggerFor]="menu"
+        ></ngx-avatar>
       </ng-template>
     </ng-container>
-    <ng-template #noAvatar>
+    <ng-template #noUser>
       <div fxLayout="row" class="signin">
         <div fxLayout="row" class="mr-3">
           <span class="material-icons icon"> account_circle </span>

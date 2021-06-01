@@ -1,15 +1,113 @@
+import { ReservationsService } from '@shared/services/reservations.service';
+import { CinemasService } from './../../../_shared/services/cinemas.service';
+import { MoviesService } from '@shared/services/movies.service';
+import { UsersService } from '@shared/services/users.service';
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard-admin',
   templateUrl: './dashboard-admin.component.html',
-  styleUrls: ['./dashboard-admin.component.scss']
+  styleUrls: ['./dashboard-admin.component.scss'],
 })
 export class DashboardAdminComponent implements OnInit {
+  single = [
+    {
+      name: 'Germany',
+      value: 8940000,
+    },
+    {
+      name: 'USA',
+      value: 5000000,
+    },
+    {
+      name: 'France',
+      value: 7200000,
+    },
+  ];
+  multi: any[];
 
-  constructor() { }
+  view: any[] = [700, 400];
 
-  ngOnInit() {
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Country';
+  showYAxisLabel = true;
+  yAxisLabel = 'Population';
+
+  showLabels: boolean = true;
+  isDoughnut: boolean = false;
+  legendPosition: string = 'below';
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
+  };
+  users: any[];
+  movies: any[];
+  cinemas: any[];
+  reservations: any[];
+  total: any;
+
+  constructor(
+    private usersService: UsersService,
+    private moviesService: MoviesService,
+    private cinemasService: CinemasService,
+    private reservationsService: ReservationsService
+  ) {
+    Object.assign(this, this.single);
+    this.getAllUser().subscribe();
+    this.getAllMovies();
+    this.getAllCinemas();
+    this.getAllReservations();
+  }
+  ngOnInit(): void {}
+
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  getAllUser() {
+    return this.usersService.getAlluser().pipe(
+      tap((res) => {
+        this.users = res;
+      })
+    );
+  }
+
+  getAllMovies() {
+    this.moviesService.getAllMovies().subscribe((res) => {
+      this.movies = res;
+    });
+  }
+
+  getAllCinemas() {
+    this.cinemasService.getAllCinemas().subscribe((res) => {
+      this.cinemas = res;
+    });
+  }
+
+  getAllReservations() {
+    this.reservationsService.getReservations().subscribe((res) => {
+      this.reservations = res;
+      // const max = res.reduce((prev, current) => (prev.total > current.total) ? prev : current);
+      // console.log(max);
+
+      // console.log(res.reduce((acc, shot) => acc = acc > shot.total ? acc : shot.total, 0));
+      // console.log(res.reduce((max, b) => Math.max(max, b.total), res[0].total));
+      // console.log(res.reduceRight((str, value) => str.total = str.total + value.total, ''));
+
+    });
+  }
 }

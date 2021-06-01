@@ -1,3 +1,5 @@
+import { ChartDetailMovieComponent } from './chart-detail-movie/chart-detail-movie.component';
+import { ChartBestMovieComponent } from './chart-best-movie/chart-best-movie.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
@@ -20,6 +22,8 @@ import { ShowtimesAdminComponent } from './showtimes-admin/showtimes-admin.compo
     ReverstationsAdminComponent,
     ShowtimesAdminComponent,
     HomeComponent,
+    ChartBestMovieComponent,
+    ChartDetailMovieComponent
   ],
 })
 export class AdminModule {}

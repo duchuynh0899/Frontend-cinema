@@ -27,10 +27,8 @@ export class MyReservationsComponent implements OnInit {
     this.currentUserService.user$.subscribe((user) => {
       this.user = user;
     });
-    this.reservationsService.getReservations().subscribe((res: any[]) => {
-      this.dataSource = res.filter((x) => {
-        return x.username === this.user.username;
-      });
+    this.reservationsService.getMyReservations(this.user.username).subscribe((res: any[]) => {
+      this.dataSource = res;
     });
   }
 
