@@ -1,2 +1,26 @@
-<p>cinemas-admin works!</p>
-<h2 class="text-white">Cinema work</h2>
+<div class="cinemas">
+  <div class="text-right">
+    <button class="mt-2 mr-5" (click)="addMovie()">Add cinema</button>
+  </div>
+  <div class="main">
+    <div class="card-main">
+      <div class="child" *ngFor="let item of cinemas" (click)="edit(item)">
+        <div class="image">
+          <img [src]="item.image" alt="" />
+        </div>
+        <div class="content">
+          <h4>{{ item.name }}</h4>
+          <p>{{ item.city }}</p>
+        </div>
+        <div class="price">
+          <mat-icon class="material-icons-outlined"> local_offer </mat-icon>
+          <p>{{ item.ticketPrice }} € per movie</p>
+        </div>
+        <div class="price">
+          <mat-icon class="material-icons-outlined"> chair </mat-icon>
+          <p>{{ item.seatsAvailable }} seats Available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

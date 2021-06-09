@@ -10,6 +10,7 @@ import { CinemasService } from './../../services/cinemas.service';
 import { ShowtimesService } from './../../services/showtimes.service';
 import { concat } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-booking-movie',
@@ -66,7 +67,8 @@ export class BookingMovieComponent implements OnInit {
     private reservationsService: ReservationsService,
     private snack: MatSnackBar,
     private currentUserService: CurrentUserService,
-    private pusherService: PusherService
+    private pusherService: PusherService,
+    private spinner: NgxSpinnerService
   ) {
     this.myForm = fb.group({
       cinema: [null],
@@ -227,7 +229,6 @@ export class BookingMovieComponent implements OnInit {
         this.reverse.forEach((reverse) => {
           reverse.seats.forEach((element) => {
             this.seatBought.push(element);
-            console.log(this.seatBought);
           });
         });
 
@@ -246,6 +247,10 @@ export class BookingMovieComponent implements OnInit {
         console.log(this.seats);
       })
     );
+  }
+
+  showLoad() {
+    this.spinner.show();
   }
 
   // paymentSuccess(payment) {

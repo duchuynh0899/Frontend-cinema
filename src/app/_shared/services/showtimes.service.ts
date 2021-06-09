@@ -17,4 +17,12 @@ export class ShowtimesService {
   getShowtimeMovieById(id: string) {
     return this.httpClient.get<any>(`${this.baseUrl}/${id}`);
   }
+
+  addShowtime(body) {
+    return this.httpClient.post<any>(`${this.baseUrl}`, body);
+  }
+
+  deleteShowtime(id) {
+    return this.httpClient.delete<any>(`${this.baseUrl}/${id}`);
+  }
 }

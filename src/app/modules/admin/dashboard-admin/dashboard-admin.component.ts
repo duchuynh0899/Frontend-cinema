@@ -51,6 +51,8 @@ export class DashboardAdminComponent implements OnInit {
   cinemas: any[];
   reservations: any[];
   total: any;
+  bestMovies: any[];
+  dataBestMovie: any;
 
   constructor(
     private usersService: UsersService,
@@ -101,13 +103,45 @@ export class DashboardAdminComponent implements OnInit {
   getAllReservations() {
     this.reservationsService.getReservations().subscribe((res) => {
       this.reservations = res;
-      // const max = res.reduce((prev, current) => (prev.total > current.total) ? prev : current);
-      // console.log(max);
+      console.log(
+        this.reservations.reduce((a, b) => {
+          return a + b.total;
+        }, 0)
+      );
 
-      // console.log(res.reduce((acc, shot) => acc = acc > shot.total ? acc : shot.total, 0));
-      // console.log(res.reduce((max, b) => Math.max(max, b.total), res[0].total));
-      // console.log(res.reduceRight((str, value) => str.total = str.total + value.total, ''));
-
+      this.bestMovies = this.getBestMovies(this.reservations, this.movies);
+      this.bestMovies.forEach((element) => {
+        element.name = element.movie.title;
+        return (element.value = element.count);
+      });
     });
+  }
+
+  getBestMovies(reservations, movies, total = 5) {
+    const reservationCounter = reservations.map((reservation) => ({
+      movieId: reservation.movieId._id,
+      count: reservations.filter(
+        (r) => r.movieId._id === reservation.movieId._id
+      ).length,
+    }));
+
+    const result = [];
+    const map = new Map();
+    for (const item of reservationCounter) {
+      if (!map.has(item.movieId)) {
+        map.set(item.movieId, true); // set any value to Map
+        result.push({
+          movieId: item.movieId,
+          count: item.count,
+        });
+      }
+    }
+    return result
+      .sort((a, b) => b.count - a.count)
+      .slice(0, total)
+      .map((res) => ({
+        movie: movies.find((movie) => movie?._id === res.movieId),
+        count: res.count,
+      }));
   }
 }

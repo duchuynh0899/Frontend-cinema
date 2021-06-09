@@ -19,7 +19,8 @@ export class LoadingInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (this.count === 0) {
+    let search = request.params.get('no-call');
+    if (this.count === 0 && search !== 'no-load') {
       this.spinner.show();
     }
     this.count++;

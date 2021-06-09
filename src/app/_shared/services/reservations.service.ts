@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env';
 
@@ -25,7 +25,9 @@ export class ReservationsService {
   }
 
   getReservations() {
-    return this.httpClient.get<any>(`${this.baseUrl}`);
+    return this.httpClient.get<any>(`${this.baseUrl}`, {
+      params: new HttpParams().set('no-call', 'no-load'),
+    });
   }
 
   getMyReservations(username: string) {

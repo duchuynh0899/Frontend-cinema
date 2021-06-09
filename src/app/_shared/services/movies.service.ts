@@ -24,5 +24,15 @@ export class MoviesService {
     );
   }
 
+  addMovie(body) {
+    return this.httpClient.post<any>(`${this.baseUrl}/movies`, body);
+  }
 
+  editMovie(body: any, id: number) {
+    return this.httpClient.put<any>(`${this.baseUrl}/movies/${id}`, body);
+  }
+
+  deleteMovie(id) {
+    return this.httpClient.delete<any>(`${this.baseUrl}/movies/${id}`);
+  }
 }

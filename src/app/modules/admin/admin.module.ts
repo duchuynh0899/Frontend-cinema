@@ -1,3 +1,6 @@
+import { AddShowtimeComponent } from './showtimes-admin/add-showtime/add-showtime.component';
+import { CinemasDialogComponent } from './cinemas-admin/cinemas-dialog/cinemas-dialog.component';
+import { ModalAddMovieComponent } from './movies-admin/modal-add-movie/modal-add-movie.component';
 import { ChartDetailMovieComponent } from './chart-detail-movie/chart-detail-movie.component';
 import { ChartBestMovieComponent } from './chart-best-movie/chart-best-movie.component';
 import { CommonModule } from '@angular/common';
@@ -23,7 +26,10 @@ import { ShowtimesAdminComponent } from './showtimes-admin/showtimes-admin.compo
     ShowtimesAdminComponent,
     HomeComponent,
     ChartBestMovieComponent,
-    ChartDetailMovieComponent
+    ChartDetailMovieComponent,
+    ModalAddMovieComponent,
+    CinemasDialogComponent,
+    AddShowtimeComponent
   ],
 })
 export class AdminModule {}

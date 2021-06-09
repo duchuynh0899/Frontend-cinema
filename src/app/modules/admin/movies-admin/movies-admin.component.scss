@@ -1,0 +1,97 @@
+.search--input {
+  width: 80%;
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-between;
+
+  > button {
+    margin-top: 5px;
+    height: 40px;
+  }
+}
+
+.movies-list {
+  height: 100%;
+  .main {
+    width: 100%;
+    height: auto;
+    > h2 {
+      color: rgb(207, 204, 204);
+      font-size: 30px;
+      font-weight: 600;
+      text-transform: capitalize;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .card-main {
+      max-width: 1400px;
+      margin: 0px auto;
+      display: flex;
+      flex-wrap: wrap;
+
+      .child {
+        flex-basis: 100%;
+        flex: 1 0 19%;
+        margin: 20px 30px 20px 30px;
+        height: 380px;
+        cursor: pointer;
+        .background {
+          max-width: 270px;
+          height: 280px;
+          background-size: cover;
+          border: 2px solid rgb(204, 195, 195);
+          background-position: center;
+        }
+        .content {
+          .name {
+            font-size: 20px;
+            line-height: 30px;
+            font-weight: 580;
+            text-transform: capitalize;
+            color: rgb(235, 233, 229);
+            margin-top: 5px;
+          }
+          .catogery {
+            font-weight: 500;
+            font-size: 14px;
+            color: rgb(231, 202, 202);
+            > span {
+              color: rgb(173, 166, 155);
+              font-weight: 550;
+            }
+          }
+          .time {
+            font-weight: 500;
+            font-size: 14px;
+            color: rgb(143, 125, 125);
+            > span {
+              color: rgb(189, 183, 174);
+              font-weight: 550;
+            }
+          }
+          .premiere {
+            font-weight: 500;
+            font-size: 14px;
+            color: rgb(207, 205, 205);
+            > span {
+              color: rgb(161, 159, 154);
+              font-weight: 550;
+            }
+          }
+        }
+      }
+      .child:hover {
+        transform: scale(1.06);
+        transition: all 0.4s;
+      }
+      .program-info {
+        // margin-right: 20px;
+      }
+    }
+  }
+}
+
+.panigation {
+  margin: 0px !important;
+  padding: 0px !important;
+}

@@ -64,7 +64,7 @@ export class UploadPhotoComponent implements OnInit {
     this.fileService.uploadAvatarUser(data).subscribe(
       (res) => {
         this.currentUserService.setCurrentUser(res.user);
-        this.snack.open('success');
+        this.snack.open('success', 'x');
       },
       (err) => {
         console.log(err);

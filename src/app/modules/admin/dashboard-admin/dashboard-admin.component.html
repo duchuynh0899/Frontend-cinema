@@ -24,7 +24,7 @@
     <div class="card">
       <div class="d-flex flex-column">
         <span>Total RESERVATIONS</span>
-        <span>{{reservations.length + 1}}</span>
+        <span>{{reservations?.length + 1}}</span>
       </div>
       <mat-icon>watch_later</mat-icon>
     </div>
@@ -32,7 +32,7 @@
   <div class="main mt-5">
     <div class="left">
       <h2 class="text-white">Best Movies</h2>
-      <app-chart-best-movie></app-chart-best-movie>
+      <app-chart-best-movie *ngIf="bestMovies" [bestMovies]="bestMovies"></app-chart-best-movie>
     </div>
     <div class="right">
       <h2 class="text-white">Sales</h2>

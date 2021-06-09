@@ -13,4 +13,16 @@ export class CinemasService {
   getAllCinemas() {
     return this.httpClient.get<any>(`${this.baseUrl}`);
   }
+
+  addCinema(body) {
+    return this.httpClient.post<any>(`${this.baseUrl}`, body);
+  }
+
+  editCinema(body) {
+    return this.httpClient.patch<any>(`${this.baseUrl}`, body);
+  }
+
+  deleteCinema(id) {
+    return this.httpClient.delete<any>(`${this.baseUrl}/${id}`);
+  }
 }

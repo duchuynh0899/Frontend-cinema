@@ -17,4 +17,18 @@ export class FileServiceService {
       data.file
     );
   }
+
+  uploadPostMovie(data: { file: any; id: string }) {
+    return this.httpClient.post<any>(
+      `${this.baseURL}/movies/photo/${data.id}`,
+      data.file
+    );
+  }
+
+  uploadAvatarCinema(data: { file: any; id: string }) {
+    return this.httpClient.post<any>(
+      `${this.baseURL}/cinemas/photo/${data.id}`,
+      data.file
+    );
+  }
 }

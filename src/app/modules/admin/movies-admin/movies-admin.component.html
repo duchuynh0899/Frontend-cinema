@@ -1,3 +1,47 @@
-<p>movies-admin works!</p>
-
-<h2 class="text-white">123</h2>
+<div class="movies-list" *ngIf="true; else noResults">
+  <div class="main">
+    <div class="search--input">
+      <div>
+        <mat-icon class="material-icons-outlined"> search </mat-icon>
+        <mat-form-field appearance="legacy">
+          <mat-label>search</mat-label>
+          <input matInput placeholder="Search member" />
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="addMovie()">Add Movie</button>
+    </div>
+    <div class="card-main">
+      <div
+        class="child"
+        *ngFor="
+          let cinema of comingSoon
+            | paginate: { itemsPerPage: 8, currentPage: p }
+        "
+        (click)="edit(cinema)"
+      >
+        <div
+          class="background"
+          [ngStyle]="{
+            'background-image': 'url(' + cinema.image + ')'
+          }"
+        ></div>
+        <div class="content">
+          <div class="name">{{ cinema.title }}</div>
+          <div class="catogery"><span>Thể loại:</span> {{ cinema.genre }}</div>
+          <div class="time"><span>Thời lượng:</span> {{ cinema.duration }}</div>
+          <div class="premiere"><span>Khởi chiếu</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-100 text-center">
+      <pagination-controls
+        class="panigation"
+        (pageChange)="p = $event"
+        maxSize="9"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>
+<ng-template #noResults>
+  <p class="no--results">No results found for "".</p>
+</ng-template>

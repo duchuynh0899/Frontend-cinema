@@ -38,7 +38,6 @@ export class DetailMoviesComponent implements OnInit {
 
   getCinema(): void {
     this.moviesService.getCinemaById(this.id).subscribe((res) => {
-      console.log(res);
       this.cinema = res;
     });
   }
@@ -52,7 +51,7 @@ export class DetailMoviesComponent implements OnInit {
       this.dataShowTime = res;
       this.dataShowTime.forEach((element) => {
         element.date = element.startDate;
-        return (element.title = element.movieId.title);
+        return (element.title = element.cinemaId.name);
       });
     });
   }
