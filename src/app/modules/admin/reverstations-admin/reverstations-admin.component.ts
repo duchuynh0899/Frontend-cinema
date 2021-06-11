@@ -12,12 +12,15 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ReverstationsAdminComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
+    'userName',
+    'Phone',
     'Movie',
     'Cinema',
     'Date',
     'Start At',
     'Ticket Price',
     'Total',
+    'checkin'
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

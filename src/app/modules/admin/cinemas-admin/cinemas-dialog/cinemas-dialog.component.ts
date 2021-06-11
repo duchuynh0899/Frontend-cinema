@@ -254,7 +254,8 @@ export class CinemasDialogComponent implements OnInit {
       ...this.myForm.value,
       seats,
     };
-    this.cinemasService.editCinema(body).subscribe((res) => {
+  
+    this.cinemasService.editCinema(body, this.data._id).subscribe((res) => {
       const formData = new FormData();
       formData.append('file', this.selectedFile);
       const data = { file: formData, id: res._id };

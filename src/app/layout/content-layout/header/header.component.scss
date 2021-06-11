@@ -8,6 +8,7 @@
 .header {
   padding: 2rem;
   height: 100%;
+  justify-content: space-between;
 
   .logo {
     font-size: 35px;
@@ -106,4 +107,56 @@
 }
 .active {
   border-bottom: 1px solid bisque;
+}
+
+.bar {
+  width: 1.9rem;
+  height: 1.5px;
+  border-radius: 2px;
+  background-color: black;
+  transition: 0.5s;
+  position: relative;
+  cursor: pointer;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: black;
+  transition: 0.5s;
+}
+
+.bar:before {
+  transform: translateY(-9px);
+}
+
+.bar:after {
+  transform: translateY(9px);
+}
+.activedbar {
+  transform: rotate(360deg);
+  background-color: transparent;
+}
+
+.activedbar:before {
+  transform: translateY(0) rotate(45deg);
+}
+
+.activedbar:after {
+  transform: translateY(0) rotate(-45deg);
+}
+.actived{
+  display: block !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .menu{
+    display: none;
+  }
+  .list-menu{
+    flex-direction: column !important;
+  }
 }

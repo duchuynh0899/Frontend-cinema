@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
   ];
   scroll: number;
   userTrue: boolean;
+  actived: boolean;
   constructor(
     private router: Router,
     private renderer: Renderer2,
@@ -58,5 +59,9 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.router.navigate(['/auth/login']);
     localStorage.clear();
+  }
+
+  active() {
+    this.actived = !this.actived;
   }
 }

@@ -23,6 +23,7 @@ import { FormatDatePipe } from './format-date.pipe';
     DeviceTypeIconPipe,
     LogoPipe,
     FormatDatePipe,
+    TwoStepPipe
   ],
 })
 export class PipesModule {}

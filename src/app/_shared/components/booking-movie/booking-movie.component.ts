@@ -159,14 +159,14 @@ export class BookingMovieComponent implements OnInit {
     this.showtimesService.getShowTimes().subscribe((res: any[]) => {
       this.showTime = res.filter((x) => {
         return (
-          x.movieId === this.movie?._id &&
-          x.cinemaId === this.myForm.get('cinema').value?._id &&
+          x.movieId._id === this.movie?._id &&
+          x.cinemaId._id === this.myForm.get('cinema').value?._id &&
           Date.parse(x.startDate) === Date.parse(this.myForm.get('day').value)
         );
       });
 
       this.movieShowtime = res.filter((x) => {
-        return x.movieId === this.id;
+        return x.movieId._id === this.id;
       });
       console.log(this.movieShowtime, 'thuwr');
     });

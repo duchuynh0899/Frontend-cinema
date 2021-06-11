@@ -1,0 +1,14 @@
+<div class="checkin">
+  <h1 class="text-center text-white">Check In</h1>
+  <ng-container *ngIf="checked; else elseTemplate">
+    <h2 class="text-center">
+     user: {{ reservations.username }} checked in.❌❌❌
+    </h2>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <h2 class="text-center">
+      Check in for user: {{ reservations.username }} was successful.😄😄😄
+    </h2>
+  </ng-template>
+  <div class="footer">Huỳnh nguyễn @ 2021</div>
+</div>

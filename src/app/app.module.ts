@@ -1,3 +1,4 @@
+import { CheckinComponent } from './modules/checkin/checkin.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DetailMoviesComponent,
     AdminLayoutComponent,
     HeaderAdminComponent,
+    CheckinComponent
   ],
   imports: [
     BrowserModule,

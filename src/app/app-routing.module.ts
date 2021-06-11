@@ -1,3 +1,4 @@
+import { CheckinComponent } from './modules/checkin/checkin.component';
 import { BookingMovieComponent } from './_shared/components/booking-movie/booking-movie.component';
 import { CinemasComponent } from './modules/cinemas/cinemas.component';
 import { ComingSoonComponent } from './modules/coming-soon/coming-soon.component';
@@ -55,6 +56,11 @@ const routes: Routes = [
         path: 'movie/booking/:id',
         canActivate: [HomeGuard],
         component: BookingMovieComponent,
+      },
+      {
+        path: 'checkin/:id',
+        canActivate: [AuthorizeGuard],
+        component: CheckinComponent,
       },
       // {
       //   path: ':id',

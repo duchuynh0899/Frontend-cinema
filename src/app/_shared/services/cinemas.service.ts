@@ -18,8 +18,8 @@ export class CinemasService {
     return this.httpClient.post<any>(`${this.baseUrl}`, body);
   }
 
-  editCinema(body) {
-    return this.httpClient.patch<any>(`${this.baseUrl}`, body);
+  editCinema(body: any, id: number) {
+    return this.httpClient.patch<any>(`${this.baseUrl}/${id}`, body);
   }
 
   deleteCinema(id) {

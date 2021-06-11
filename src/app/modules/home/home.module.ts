@@ -1,4 +1,3 @@
-import { TestComponent } from './test/test.component';
 import { HomeComingSoonComponent } from './home-coming-soon/home-coming-soon.component';
 import { MovieNowShowingComponent } from './movie-now-showing/movie-now-showing.component';
 import { NowShowingComponent } from './../now-showing/now-showing.component';
@@ -18,7 +17,6 @@ import { SharedModule } from '@shared/shared.module';
     SuggetedComponent,
     MovieNowShowingComponent,
     HomeComingSoonComponent,
-    TestComponent,
   ],
 })
 export class HomeModule {}
