@@ -15,8 +15,12 @@
     .navbar {
       background: linear-gradient(0deg, #ec250d 0, #fd5d93 100%);
       width: 15rem;
-      height: 98.3%;
+      height: 103.3%;
       padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 50px;
       .item {
         cursor: pointer;
         color: white;
