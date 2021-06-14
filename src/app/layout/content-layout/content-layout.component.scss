@@ -1,4 +1,4 @@
-@import 'custom-theme';
+@import "custom-theme";
 
 .admin-container {
   .header {
@@ -8,5 +8,14 @@
     top: 0;
     left: 0;
     z-index: 999;
+  }
+  mat-drawer {
+    width: 270px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff !important;
+    border: none !important;
+    z-index: 999999;
   }
 }

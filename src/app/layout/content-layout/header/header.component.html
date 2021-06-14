@@ -1,40 +1,31 @@
 <div fxLayout="row" class="p-4" class="header" [class.scroll]="scroll >= 30">
-  <h2 class="logo btn" routerLink="/">Cinema+</h2>
+  <div class="logo btn d-flex">
+    <button class="toggle" mat-icon-button (click)="toggle.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h2 routerLink="/">Cinema+</h2>
+  </div>
+
   <div class="menu" [ngClass]="{'actived': actived === true }">
     <ul fxLayout="row" fxLayoutAlign="space-around center" class="list-menu">
-      <li
-        *ngFor="let item of listMenu"
-        [routerLink]="item.url"
-        [routerLinkActive]="item.url !== '' ? 'active' : ''"
-        class="ml-4"
-        class="menu-item"
-        fxFlex.md="100"
-        fxFlex.sm="100"
-        fxFlex.xs="100"
-      >
+      <li *ngFor="let item of listMenu" [routerLink]="item.url" [routerLinkActive]="item.url !== '' ? 'active' : ''"
+        class="ml-4" class="menu-item" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
         <a class="item">{{ item.name }}</a>
       </li>
     </ul>
   </div>
 
+
   <div class="dasboard">
-    <div class="mr-2 hamburger-menu"  (click)="active()">
+    <!-- <div class="mr-2 hamburger-menu" (click)="active()">
       <div class="bar" [ngClass]="{'activedbar': actived === true }"></div>
-    </div>
+    </div> -->
     <ng-container *ngIf="userTrue; else noUser">
       <ng-container *ngIf="currentUser.imageurl; else noAvatar">
-        <ngx-avatar
-          class="material-icons avatar"
-          [src]="currentUser.imageurl"
-          [matMenuTriggerFor]="menu"
-        ></ngx-avatar>
+        <ngx-avatar class="material-icons avatar" [src]="currentUser.imageurl" [matMenuTriggerFor]="menu"></ngx-avatar>
       </ng-container>
       <ng-template #noAvatar>
-        <ngx-avatar
-          class="material-icons avatar"
-          [name]="currentUser.username"
-          [matMenuTriggerFor]="menu"
-        ></ngx-avatar>
+        <ngx-avatar class="material-icons avatar" [name]="currentUser.username" [matMenuTriggerFor]="menu"></ngx-avatar>
       </ng-template>
     </ng-container>
     <ng-template #noUser>
