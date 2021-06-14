@@ -2,7 +2,7 @@
   <div class="admin-content">
     <mat-drawer-container>
       <mat-drawer #snav mode="over">
-
+        <app-menu (toggle)="snav.toggle()"></app-menu>
       </mat-drawer>
       <mat-drawer-content>
         <div class="header">

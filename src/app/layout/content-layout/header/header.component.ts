@@ -7,6 +7,7 @@ import {
   Output,
   OnInit,
   Renderer2,
+  Input,
 } from '@angular/core';
 import { AbstractHeaderDirective } from '@shared/components/abstract/abstract-header.directive';
 import { DestroyService } from '@shared/services/destroy.service';
@@ -29,11 +30,12 @@ export class HeaderComponent implements OnInit {
   scroll: number;
   userTrue: boolean;
   actived: boolean;
+  @Output() toggle = new EventEmitter<void>();
   constructor(
     private router: Router,
     private renderer: Renderer2,
     private currentUserService: CurrentUserService
-  ) {}
+  ) { }
   currentUser: any;
   protected destroy$ = new Subject();
   ngOnInit(): void {
@@ -54,6 +56,10 @@ export class HeaderComponent implements OnInit {
     this.renderer.listen(window, 'scroll', ($event) => {
       this.scroll = window.scrollY;
     });
+  }
+
+  snavToggle() {
+    this.toggle.emit();
   }
 
   logout(): void {
