@@ -12,9 +12,9 @@ import { Observable, of } from 'rxjs';
 import { NgxPermissionsService } from 'ngx-permissions';
 
 
-export const PERMS = [
-  'superadmin',
-];
+// export const PERMS = [
+//   'superadmin',
+// ];
 @Injectable({
   providedIn: 'root',
 })
@@ -22,7 +22,6 @@ export class AuthorizeGuard implements CanActivate {
   constructor(
     private router: Router,
     private currentUserService: CurrentUserService,
-    private permissionsService: NgxPermissionsService,
   ) {}
 
   canActivate(
@@ -30,11 +29,6 @@ export class AuthorizeGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     return this.currentUserService.getUserInfor().pipe(
-      tap(x => {
-        const perm = [x?.role];
-        console.log(x);
-        this.permissionsService.loadPermissions(PERMS);
-      }),
       map((e) => {
         return true;
       }),

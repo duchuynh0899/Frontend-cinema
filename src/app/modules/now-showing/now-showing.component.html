@@ -1,14 +1,14 @@
 <div class="main">
   <h2>Now showing</h2>
   <div
-    class="card"
+    class="card-now"
     *ngFor="
       let cinema of nowShowingMovies
         | paginate: { itemsPerPage: 8, currentPage: p }
     "
     [routerLink]="['/movie', cinema._id]"
   >
-    <div class="card-body">
+    <div class="card-body-now">
       <div class="main-card">
         <header>
           <p class="title">{{ cinema.title }}</p>
@@ -33,7 +33,7 @@
       ></div>
     </div>
   </div>
-  <div class="w-100 text-center">
+  <div class="text-center w-100">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 

@@ -31,7 +31,7 @@
       </mat-form-field>
     </div>
 
-    <div formArrayName="seatsList">
+    <div formArrayName="seats">
       <div *ngFor="let item of urlRedirectsArray.controls; let i = index" fxLayout="row" fxLayoutAlign="center end">
         <mat-form-field class="mt-3 w-100">
           <mat-label>Add seat row {{i + 1}}</mat-label>
@@ -56,13 +56,13 @@
       <input class="ng-hide" id="input-file-id" multiple type="file" (change)="onSelectFile($event)" accept="image/*" />
     </div>
     <ng-container *ngIf="data; else noData">
-      <div class="w-100  text-center">
+      <div class="text-center w-100">
         <button class="mr-2" mat-flat-button color="accent" *ngIf="data" (click)="deleteCinema()">Delete</button>
         <button mat-flat-button color="primary" (click)="edit()">Save</button>
       </div>
     </ng-container>
     <ng-template #noData>
-      <div class="w-100  text-center">
+      <div class="text-center w-100">
         <button mat-flat-button color="primary" (click)="addMovie()">Save</button>
       </div>
     </ng-template>

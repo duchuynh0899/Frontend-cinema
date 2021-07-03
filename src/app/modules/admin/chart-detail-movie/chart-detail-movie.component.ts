@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-chart-detail-movie',
   templateUrl: './chart-detail-movie.component.html',
   styleUrls: ['./chart-detail-movie.component.scss']
 })
-export class ChartDetailMovieComponent implements OnInit {
-
+export class ChartDetailMovieComponent implements OnInit, OnChanges {
+  @Input() bestMovies: any;
   single = [
     {
       name: 'Germany',
@@ -37,7 +37,11 @@ export class ChartDetailMovieComponent implements OnInit {
     Object.assign(this, this.single );
   }
   ngOnInit(): void {
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.single = this.bestMovies;
+    console.log(this.bestMovies);
   }
 
   onSelect(data): void {

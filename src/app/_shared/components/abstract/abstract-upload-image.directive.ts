@@ -8,7 +8,6 @@ export abstract class AbstractUpLoadImageDirective {
   constructor(protected snack: MatSnackBar) { }
 
   onSelectFile(file: File): void {
-    console.log(file);
     const type = ['gif', 'jpg', 'png', 'jpeg', 'bmp'];
     if (file && type.includes(file.type.split('/')[1]) && file.size < 5000000) {
       this.selectedFile = file;

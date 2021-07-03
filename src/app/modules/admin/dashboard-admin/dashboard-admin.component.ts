@@ -3,7 +3,7 @@ import { CinemasService } from './../../../_shared/services/cinemas.service';
 import { MoviesService } from '@shared/services/movies.service';
 import { UsersService } from '@shared/services/users.service';
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -103,12 +103,6 @@ export class DashboardAdminComponent implements OnInit {
   getAllReservations() {
     this.reservationsService.getReservations().subscribe((res) => {
       this.reservations = res;
-      console.log(
-        this.reservations.reduce((a, b) => {
-          return a + b.total;
-        }, 0)
-      );
-
       this.bestMovies = this.getBestMovies(this.reservations, this.movies);
       this.bestMovies.forEach((element) => {
         element.name = element.movie.title;
@@ -121,7 +115,7 @@ export class DashboardAdminComponent implements OnInit {
     const reservationCounter = reservations.map((reservation) => ({
       movieId: reservation.movieId._id,
       count: reservations.filter(
-        (r) => r.movieId._id === reservation.movieId._id
+        (r) => r.movieId.title === reservation.movieId.title
       ).length,
     }));
 

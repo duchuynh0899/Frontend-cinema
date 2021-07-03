@@ -1,13 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  OnChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss'],
 })
-export class BannerComponent implements OnInit {
+export class BannerComponent implements OnInit, OnChanges {
   listMenu = [
     { name: 'Home', url: 'home' },
     { name: 'Now Showing', url: 'show' },
@@ -18,10 +23,11 @@ export class BannerComponent implements OnInit {
   cinema: any;
 
   constructor(private router: Router) {}
-  ngOnInit(): void {
+
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
     let ran = Math.round((Math.random() * 100) % 5);
-    setTimeout(() => {
-      this.cinema = this.cinemas[ran];
-    }, 1000);
+    this.cinema = this.cinemas[ran];
   }
 }

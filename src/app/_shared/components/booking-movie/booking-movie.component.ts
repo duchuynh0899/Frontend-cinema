@@ -220,7 +220,7 @@ export class BookingMovieComponent implements OnInit {
       tap((res) => {
         this.reverse = res.filter((x) => {
           return (
-            x.movieId._id === this.movie?._id &&
+            x.movieId?._id === this.movie?._id &&
             x.cinemaId._id === this.myForm.get('cinema').value?._id &&
             Date.parse(x.date) === Date.parse(this.myForm.get('day').value) &&
             x.startAt === this.myForm.get('time').value.startAt

@@ -10,7 +10,7 @@ export const MenuItems = [
     name: 'Now Showing',
     isActive: false,
     isShow: true,
-    url: '/user',
+    url: 'now-showing',
     icon: 'user',
     description: 'Add or manage end users'
   },
@@ -18,7 +18,7 @@ export const MenuItems = [
     name: 'Coming Soon',
     isActive: false,
     isShow: true,
-    url: '/admin',
+    url: 'coming-soon',
     icon: 'user-secret',
     description: 'Add or manage admin users'
   },
@@ -26,7 +26,7 @@ export const MenuItems = [
     name: 'Cinemas',
     isActive: false,
     isShow: true,
-    url: '/role',
+    url: '/cinemas',
     icon: 'lock',
     description: 'Manage administrative roles'
   },

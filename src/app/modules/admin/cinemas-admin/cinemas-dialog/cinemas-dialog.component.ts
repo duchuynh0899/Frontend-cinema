@@ -30,12 +30,12 @@ export class CinemasDialogComponent implements OnInit {
       city: [null, TValidators.required],
       ticketPrice: [null, TValidators.required],
       seatsAvailable: [null, TValidators.required],
-      seatsList: fb.array([this.fb.control('', [TValidators.required])]),
+      seats: fb.array([this.fb.control('', [TValidators.required])]),
     });
   }
 
   get urlRedirectsArray() {
-    return <FormArray>this.myForm.get('seatsList');
+    return <FormArray>this.myForm.get('seats');
   }
 
   ngOnInit() {
@@ -81,7 +81,7 @@ export class CinemasDialogComponent implements OnInit {
   }
 
   addMovie() {
-    const seats: any[] = this.myForm.get('seatsList').value;
+    const seats: any[] = this.myForm.get('seats').value;
 
     if (seats[0] === '5') {
       seats[0] = [0, 0, 0, 0, 0];
@@ -176,7 +176,7 @@ export class CinemasDialogComponent implements OnInit {
   }
 
   edit() {
-    const seats: any[] = this.myForm.get('seatsList').value;
+    const seats: any[] = this.myForm.get('seats').value;
 
     if (seats[0] === '5') {
       seats[0] = [0, 0, 0, 0, 0];
@@ -254,7 +254,6 @@ export class CinemasDialogComponent implements OnInit {
       ...this.myForm.value,
       seats,
     };
-  
     this.cinemasService.editCinema(body, this.data._id).subscribe((res) => {
       const formData = new FormData();
       formData.append('file', this.selectedFile);

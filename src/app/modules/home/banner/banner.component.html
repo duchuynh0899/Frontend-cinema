@@ -1,10 +1,9 @@
 <div class="main">
   <div
-    *ngIf="cinema?.image"
     [ngStyle]="{ 'background-image': 'url(' + cinema?.image + ')' }"
     class="banner"
   >
-    <a class="text-white to-detail" [routerLink]="['movie', cinema._id]">
+    <a class="text-white to-detail" [routerLink]="['movie', cinema?._id]">
       Learn More</a
     >
   </div>
@@ -17,5 +16,5 @@
       <span class="ml-3 text-uppercase">{{ cinema?.genre }}</span>
     </div>
   </div>
-  <div class="modal"></div>
+  <div class="modal-shadow"></div>
 </div>
