@@ -7,7 +7,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AddShowtimeComponent } from './add-showtime/add-showtime.component';
 import { MoviesService } from '@shared/services/movies.service';
 
-
 @Component({
   selector: 'app-showtimes-admin',
   templateUrl: './showtimes-admin.component.html',
@@ -16,7 +15,15 @@ import { MoviesService } from '@shared/services/movies.service';
 export class ShowtimesAdminComponent implements OnInit {
   movie: any;
 
-  displayedColumns = ['ID', 'Movie', 'Cinema', 'Start Date', 'End Date', 'Time', 'action'];
+  displayedColumns = [
+    'ID',
+    'Movie',
+    'Cinema',
+    'Start Date',
+    'End Date',
+    'Time',
+    'action',
+  ];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
   showtime: any;
@@ -28,11 +35,9 @@ export class ShowtimesAdminComponent implements OnInit {
     private snack: MatSnackBar
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getShowtime();
   }
-
-
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -42,7 +47,7 @@ export class ShowtimesAdminComponent implements OnInit {
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
+  masterToggle(): void {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
@@ -61,26 +66,26 @@ export class ShowtimesAdminComponent implements OnInit {
     }`;
   }
 
-  addShowtime() {
-   const dialog = this.dialog.open(AddShowtimeComponent, {
+  addShowtime(): void {
+    const dialog = this.dialog.open(AddShowtimeComponent, {
       width: '800px',
       panelClass: 'custom-padding-dialog',
-   });
+    });
 
-   dialog.afterClosed().subscribe(result => {
-    this.getShowtime();
-   });
-  }
-
-  getShowtime() {
-    this.showtimesService.getShowTimes().subscribe(
-      res => {
-        this.dataSource = new MatTableDataSource<any>(res);
+    dialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getShowtime();
       }
-    )
+    });
   }
 
-  deleteShowtime(element) {
+  getShowtime(): void {
+    this.showtimesService.getShowTimes().subscribe((res) => {
+      this.dataSource = new MatTableDataSource<any>(res);
+    });
+  }
+
+  deleteShowtime(element): void {
     this.showtimesService.deleteShowtime(element._id).subscribe(
       () => {
         this.snack.open('Success', 'x');
@@ -89,6 +94,6 @@ export class ShowtimesAdminComponent implements OnInit {
       () => {
         this.snack.open('Error', 'x');
       }
-    )
+    );
   }
 }

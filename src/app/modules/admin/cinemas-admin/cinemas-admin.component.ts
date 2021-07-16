@@ -6,13 +6,15 @@ import { CinemasService } from '@shared/services/cinemas.service';
 @Component({
   selector: 'app-cinemas-admin',
   templateUrl: './cinemas-admin.component.html',
-  styleUrls: ['./cinemas-admin.component.scss']
+  styleUrls: ['./cinemas-admin.component.scss'],
 })
 export class CinemasAdminComponent implements OnInit {
-
   cinemas: any[];
 
-  constructor(private cinemasService: CinemasService, private dialog: MatDialog) {
+  constructor(
+    private cinemasService: CinemasService,
+    private dialog: MatDialog
+  ) {
     this.getCinemas();
   }
 
@@ -25,24 +27,27 @@ export class CinemasAdminComponent implements OnInit {
   }
 
   edit(data: any): void {
-    const dialog =  this.dialog.open(CinemasDialogComponent, {
+    const dialog = this.dialog.open(CinemasDialogComponent, {
       width: '800px',
       panelClass: 'custom-padding-dialog',
-      data
+      data,
     });
-    dialog.afterClosed().subscribe(result => {
-      this.getCinemas();
-     });
+    dialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getCinemas();
+      }
+    });
   }
 
   addMovie() {
-    const dialog =  this.dialog.open(CinemasDialogComponent, {
+    const dialog = this.dialog.open(CinemasDialogComponent, {
       width: '800px',
       panelClass: 'custom-padding-dialog',
     });
-    dialog.afterClosed().subscribe(result => {
-      this.getCinemas();
-     });
+    dialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getCinemas();
+      }
+    });
   }
-
 }

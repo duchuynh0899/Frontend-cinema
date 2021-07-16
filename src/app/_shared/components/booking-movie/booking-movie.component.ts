@@ -1,8 +1,9 @@
+import { UsersService } from '@shared/services/users.service';
 import { PusherService } from './../../services/pusher.service';
 import { CurrentUserService } from '@shared/services/current-user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '@shared/services/movies.service';
 import { ReservationsService } from '@shared/services/reservations.service';
@@ -57,7 +58,7 @@ export class BookingMovieComponent implements OnInit {
     },
   ];
   alert = false;
-
+  email = new FormControl(null);
   constructor(
     private fb: FormBuilder,
     private moviesService: MoviesService,
@@ -68,7 +69,8 @@ export class BookingMovieComponent implements OnInit {
     private snack: MatSnackBar,
     private currentUserService: CurrentUserService,
     private pusherService: PusherService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private usersService: UsersService
   ) {
     this.myForm = fb.group({
       cinema: [null],
@@ -251,6 +253,24 @@ export class BookingMovieComponent implements OnInit {
 
   showLoad() {
     this.spinner.show();
+  }
+
+  sendMail() {
+    const data = [
+      {
+        cinema: 'Cinema Thái Bình',
+        date: '2021-07-16',
+        host: 'huynh nguyen',
+        image: 'https://source.unsplash.com/featured/?cinema',
+        movie: 'the avengers',
+        seat: 'B-1',
+        time: '12:00',
+        to: 'huynhnd72@wru.vn',
+      },
+    ];
+    this.usersService.sendMail(data).subscribe((res) => {
+      this.snack.open(res[0].msg, 'ok');
+    });
   }
 
   // paymentSuccess(payment) {

@@ -156,6 +156,9 @@
 }
 .qr-code {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
 }
 @media (max-width: 800px) {
   .booking {

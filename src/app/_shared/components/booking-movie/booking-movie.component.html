@@ -1,9 +1,11 @@
 <div class="booking">
   <mat-card class="card-booking">
     <div>
-      <div [ngStyle]="{
+      <div
+        [ngStyle]="{
           'background-image': 'url(' + movie?.image + ')'
-        }"></div>
+        }"
+      ></div>
       <span>{{ movie?.title }}</span>
       <div class="info">
         <div>
@@ -22,45 +24,63 @@
     </div>
   </mat-card>
   <div class="w-100">
-    <form [formGroup]="myForm" class="d-flex justify-content-center" style="gap: 10px">
+    <form
+      [formGroup]="myForm"
+      class="d-flex justify-content-center"
+      style="gap: 10px"
+    >
       <mat-form-field appearance="outline" fxFlex="30">
         <mat-label>Cinemas</mat-label>
-        <mat-select formControlName="cinema" (selectionChange)="someMethod($event.value)">
+        <mat-select
+          formControlName="cinema"
+          (selectionChange)="someMethod($event.value)"
+        >
           <mat-option [value]="cinema" *ngFor="let cinema of cinemas">{{
             cinema.name
-            }}</mat-option>
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" fxFlex="30" formControlName="day" (dateChange)="valueChanged()" />
+        <input
+          matInput
+          [matDatepicker]="picker"
+          fxFlex="30"
+          formControlName="day"
+          (dateChange)="valueChanged()"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="outline" fxFlex="30">
         <mat-label>Select Time</mat-label>
-        <mat-select formControlName="time" (selectionChange)="showSeat($event.value);showLoad()">
+        <mat-select
+          formControlName="time"
+          (selectionChange)="showSeat($event.value); showLoad()"
+        >
           <mat-option [value]="time" *ngFor="let time of showTime">{{
             time?.startAt
-            }}</mat-option>
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </form>
     <ng-container *ngIf="movieShowtime.length !== 0; else elseTemplate">
       <div class="mt-4 d-flex" *ngIf="show">
-        <div class="row">
-          <!-- <div>A</div>
-        <div>B</div>
-        <div>C</div>
-        <div>E</div>
-        <div>F</div>
-        <div>G</div> -->
-        </div>
+        <div class="row"></div>
         <div class="booking__seet">
-          <div *ngFor="let row of seats; let rowItem = index" class="d-flex flex-nowrap">
-            <button mat-flat-button *ngFor="let seat of row; let col = index" class="seat"
-              (click)="selectSeat([rowItem, col])" [ngClass]="selectedSeat([rowItem, col])" [disabled]="seat === 1"
-              [style.background]="seat === 1 ? 'rgb(93, 93, 97)' : ''">
+          <div
+            *ngFor="let row of seats; let rowItem = index"
+            class="d-flex flex-nowrap"
+          >
+            <button
+              mat-flat-button
+              *ngFor="let seat of row; let col = index"
+              class="seat"
+              (click)="selectSeat([rowItem, col])"
+              [ngClass]="selectedSeat([rowItem, col])"
+              [disabled]="seat === 1"
+              [style.background]="seat === 1 ? 'rgb(93, 93, 97)' : ''"
+            >
               <span>{{ col + 1 }}</span>
             </button>
           </div>
@@ -97,18 +117,36 @@
             <span>{{ price }} $</span>
           </div>
         </div>
-        <div class="checkout btn" (click)="checkOut()" id="paypal-button">Checkout</div>
+        <div class="checkout btn" (click)="checkOut()" id="paypal-button">
+          Checkout
+        </div>
       </div>
       <div class="qr-code" *ngIf="!show">
-        <h2 class="text-white" *ngIf="detailSeservations?.QRCode">
-          Please save the QrCode, You can Checkin in by QrCode
-        </h2>
-        <img [src]="detailSeservations?.QRCode" alt="" />
+        <div>
+          <h2 class="text-white" *ngIf="detailSeservations?.QRCode">
+            Please save the QrCode, You can Checkin in by QrCode
+          </h2>
+          <img [src]="detailSeservations?.QRCode" alt="" />
+        </div>
+
+        <div *ngIf="detailSeservations?.QRCode">
+          <h2 class="text-white" style="width: 500px;">
+            Guest Invitation You have successfuly booked your seats. Please fill
+            the emails below, to send invitations to your friends!
+          </h2>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+          </mat-form-field>
+          <button mat-flat-button color="primary" (click)="sendMail()" class="ml-2">
+            Send mail
+          </button>
+        </div>
       </div>
     </ng-container>
     <ng-template #elseTemplate>
       <div class="mt-5 text-center text-white">
-        <h2>No Cinema Available.</h2>
+        <h2 style="font-size: 50px">No Cinema Available.</h2>
       </div>
     </ng-template>
   </div>

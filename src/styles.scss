@@ -320,3 +320,13 @@ table {
 .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-label {
   margin-top: 16px !important;
 }
+
+.qr-code{
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+  /* Font color */
+  input.mat-input-element {
+    color: white;
+  }
+}

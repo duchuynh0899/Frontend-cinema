@@ -1,3 +1,4 @@
+import { UsersComponent } from './users/users.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { AccountComponent } from './account/account.component';
@@ -25,7 +26,7 @@ const routes: Routes = [
       { path: 'movie', component: MoviesAdminComponent },
       { path: 'show-time', component: ShowtimesAdminComponent },
       { path: 'revers', component: ReverstationsAdminComponent },
-      { path: 'my-account', component: AccountComponent },
+      { path: 'users', component: UsersComponent },
     ],
   },
 ];

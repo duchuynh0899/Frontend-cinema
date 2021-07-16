@@ -34,7 +34,9 @@ export class MoviesAdminComponent implements OnInit {
       data,
     });
     dialog.afterClosed().subscribe((result) => {
-      this.getAllMovies();
+      if (result) {
+        this.getAllMovies();
+      }
     });
   }
 
@@ -44,7 +46,9 @@ export class MoviesAdminComponent implements OnInit {
       panelClass: 'custom-padding-dialog',
     });
     dialog.afterClosed().subscribe((result) => {
-      this.getAllMovies();
+      if (result) {
+        this.getAllMovies();
+      }
     });
   }
 }

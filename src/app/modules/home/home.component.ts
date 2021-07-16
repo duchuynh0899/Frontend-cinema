@@ -38,11 +38,11 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    let ran = Math.round((Math.random() * 100) % 5);
+    const ran = Math.round((Math.random() * 100) % 5);
     this.cinema = this.cinemas[ran];
   }
 
-  getAllMovies() {
+  getAllMovies(): void {
     this.moviesService.getAllMovies().subscribe((res) => {
       this.cinemas = res;
       this.nowShowingMovies = this.cinemas.filter((movie) => {
@@ -57,15 +57,15 @@ export class HomeComponent {
     });
   }
 
-  getNowDate() {
-    let today = new Date();
+  getNowDate(): void {
+    const today = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); 
     const yyyy = today.getFullYear();
     this.nowDate = mm + '/' + dd + '/' + yyyy;
   }
 
-  getSuggestedMovie() {
+  getSuggestedMovie(): void {
     this.moviesService
       .getMovieSuggested(this.user?.username)
       .subscribe((res) => {

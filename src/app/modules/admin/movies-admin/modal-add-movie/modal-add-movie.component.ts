@@ -116,7 +116,7 @@ export class ModalAddMovieComponent implements OnInit {
       const data = { file: formData, id: res._id };
       this.fileService.uploadPostMovie(data).subscribe(
         (res) => {
-          this.dialogRef.close();
+          this.dialogRef.close('oke');
           this.snack.open('success', 'x');
         },
         (err) => {
@@ -136,7 +136,7 @@ export class ModalAddMovieComponent implements OnInit {
       const data = { file: formData, id: res._id };
       this.fileService.uploadPostMovie(data).subscribe(
         (res) => {
-          this.dialogRef.close();
+          this.dialogRef.close('oke');
           this.snack.open('success', 'x');
         },
         (err) => {
@@ -149,7 +149,7 @@ export class ModalAddMovieComponent implements OnInit {
   deleteMovie() {
     this.moviesService.deleteMovie(this.data._id).subscribe(
       (res) => {
-        this.dialogRef.close();
+        this.dialogRef.close('oke');
         this.snack.open('success', 'x');
       },
       (err) => {

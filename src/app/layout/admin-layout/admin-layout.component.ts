@@ -33,11 +33,11 @@ export class AdminLayoutComponent implements OnInit {
       url: 'revers',
       icon: 'book_online',
     },
-    // {
-    //   name: 'Account',
-    //   url: 'my-account',
-    //   icon: 'person',
-    // },
+    {
+      name: 'Users',
+      url: 'users',
+      icon: 'person',
+    },
   ];
 
   constructor(private router: Router) {}

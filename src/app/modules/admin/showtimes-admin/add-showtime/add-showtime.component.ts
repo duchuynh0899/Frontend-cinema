@@ -79,14 +79,18 @@ export class AddShowtimeComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAllMovies();
     this.getCinemas();
   }
 
-  submit() {
-    this.showtimesService.addShowtime(this.myForm.value).subscribe((res) => {
-      this.dialogRef.close();
+  submit(): void {
+    const data = {
+      ...this.myForm.value,
+      endDate: this.myForm.get('startDate').value
+    }
+    this.showtimesService.addShowtime(data).subscribe((res) => {
+      this.dialogRef.close('oke');
       this.snack.open('success', 'x');
     });
   }
@@ -97,7 +101,7 @@ export class AddShowtimeComponent implements OnInit {
     });
   }
 
-  getCinemas() {
+  getCinemas(): void {
     this.cinemasService
       .getAllCinemas()
       .subscribe((res) => (this.cinemas = res));

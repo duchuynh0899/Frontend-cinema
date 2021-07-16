@@ -260,7 +260,7 @@ export class CinemasDialogComponent implements OnInit {
       const data = { file: formData, id: res._id };
       this.fileService.uploadAvatarCinema(data).subscribe(
         (res2) => {
-          this.dialogRef.close();
+          this.dialogRef.close('oke');
           this.snack.open('success', 'x');
         },
         (err) => {
@@ -273,7 +273,7 @@ export class CinemasDialogComponent implements OnInit {
   deleteCinema() {
     this.cinemasService.deleteCinema(this.data._id).subscribe(
       (res2) => {
-        this.dialogRef.close();
+        this.dialogRef.close('oke');
         this.snack.open('success', 'x');
       },
       (err) => {

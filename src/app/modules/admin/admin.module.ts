@@ -1,3 +1,5 @@
+import { ModalUsersComponent } from './users/modal-users/modal-users.component';
+import { UsersComponent } from './users/users.component';
 import { AddShowtimeComponent } from './showtimes-admin/add-showtime/add-showtime.component';
 import { CinemasDialogComponent } from './cinemas-admin/cinemas-dialog/cinemas-dialog.component';
 import { ModalAddMovieComponent } from './movies-admin/modal-add-movie/modal-add-movie.component';
@@ -29,7 +31,9 @@ import { ShowtimesAdminComponent } from './showtimes-admin/showtimes-admin.compo
     ChartDetailMovieComponent,
     ModalAddMovieComponent,
     CinemasDialogComponent,
-    AddShowtimeComponent
+    AddShowtimeComponent,
+    UsersComponent,
+    ModalUsersComponent
   ],
 })
 export class AdminModule {}

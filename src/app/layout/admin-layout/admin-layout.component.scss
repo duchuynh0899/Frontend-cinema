@@ -21,6 +21,8 @@
       flex-direction: column;
       justify-content: flex-start;
       gap: 50px;
+      align-items: flex-start;
+      
       .item {
         cursor: pointer;
         color: white;
@@ -37,4 +39,5 @@
   background: bisque;
   color: rgba(90, 75, 75, 0.445) !important;
   border-radius: 4px;
+  width: 100%;
 }
